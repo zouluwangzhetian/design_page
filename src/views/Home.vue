@@ -39,23 +39,27 @@
           <widget-page></widget-page>
         </el-main>
       </el-container>
-      <el-aside width="384px" style="background-color:red">
+      <el-aside width="384px">
+        <field-config></field-config>
       </el-aside>
     </el-container>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Header from '@/components/header'
 import SlideBar from '@/components/slideBar'
 import WidgetPage from '@/components/widgetPage'
+import fieldConfig from '@/components/fieldConfig'
 
 export default {
   name: 'Home',
   components: {
     Header,
     SlideBar,
-    WidgetPage
+    WidgetPage,
+    fieldConfig
   },
   methods: {
     // 重置
