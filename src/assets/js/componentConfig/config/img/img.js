@@ -1,22 +1,11 @@
 export default [{
   type: 'img',
   name: '图片展示',
-  positionFixed: 'auto',
-  styleType: 'col1',
-  styleTypes: [
-    {
-      value: 'col1',
-      label: '单列'
-    },
-    {
-      value: 'col2',
-      label: '双列'
-    }
-  ],
+  col: 12,
   imglist: [
     {
-      img: '',
-      link: ''
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      link: 'https://www.baidu.com'
     }
   ],
   style: {

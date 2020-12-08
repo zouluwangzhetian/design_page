@@ -27,13 +27,15 @@ export default {
   },
   components: {  
     /* eslint-disable */
-    WgText: () => import('./components/wgText') // 文本选择
+    WgText: () => import('./components/wgText'), // 文本选择
+    WgImg: () => import('./components/wgImg') // 文本选择
     /* eslint-enable */
   },
   data () {
     return {
       wgMap: {
-        text: 'WgText' // 文本选择
+        text: 'WgText', // 文本选择
+        img: 'WgImg'
       }
     }
   },
