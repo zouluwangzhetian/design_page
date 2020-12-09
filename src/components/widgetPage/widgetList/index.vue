@@ -27,15 +27,17 @@ export default {
   },
   components: {  
     /* eslint-disable */
-    WgText: () => import('./components/wgText'), // 文本选择
-    WgImg: () => import('./components/wgImg') // 文本选择
+    WgText: () => import('./components/wgText'), // 文本组件
+    WgImg: () => import('./components/wgImg'), // 图片组件
+    WgSwiper: () => import('./components/wgSwiper') // 轮播图组件
     /* eslint-enable */
   },
   data () {
     return {
       wgMap: {
         text: 'WgText', // 文本选择
-        img: 'WgImg'
+        img: 'WgImg',
+        swiper: 'WgSwiper'
       }
     }
   },
@@ -56,6 +58,8 @@ export default {
 
 <style lang="less" scoped>
   .active{
+    position: relative;
     box-shadow: 0px 1px 10px 1px rgba(37, 83, 244, .5);
+    z-index: 100;
   }
 </style>

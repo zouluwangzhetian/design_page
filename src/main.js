@@ -8,6 +8,16 @@ import util from './utils';
 
 Vue.config.productionTip = false
 Vue.prototype.$util = util;
+Vue.prototype.$toPatch = function toPatch (path) {
+  console.log(process.env.VUE_APP_btn)
+  // eslint-disable-next-line
+  let urlRep = /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+  urlRep.test(path)
+  if (process.env.VUE_APP_btn === 'false' && !urlRep.test(path)) {
+    return
+  }
+  window.location = path
+}
 
 new Vue({
   router,

@@ -1,22 +1,23 @@
 export default [{
   type: 'swiper',
   name: '图片轮播',
-  value: [{
-    url: 'https://www.baidu.com',
-    image: 'static/img/theme1.jpg'
-  },
-  {
-    url: 'https://qq.com',
-    image: 'static/img/theme2.jpg'
-  },
-  {
-    url: 'https://jd.com',
-    image: 'static/img/theme3.jpg'
-  }
+  value: [
+    {
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      link: 'https://www.baidu.com'
+    },
+    {
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      link: 'https://www.baidu.com'
+    },
+    {
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      link: 'https://www.baidu.com'
+    }
   ],
   interval: 3000,
   style: {
     margin: '0px 0px 0px 0px',
-    height: 250
+    height: 'auto'
   }
 }]
