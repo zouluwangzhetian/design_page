@@ -43,10 +43,12 @@ export default {
     handleWidgetAdd (e) {
       console.log('元素添加回调', e);
       this.$store.commit('widgetData/setSelectWg', this.pageData.list[e.newIndex])
+      this.$store.commit('widgetData/setSelectIndex', e.newIndex)
     },
-    dragEnd () {
-      console.log('移动结束');
+    dragEnd (e) {
+      console.log('移动结束', e);
       console.log(this.pageData.list);
+      this.$store.commit('widgetData/setSelectIndex', e.newIndex)
     },
     dragStart (e) {
       console.log('元素移动回调', e);

@@ -13,7 +13,7 @@ Vue.prototype.$toPatch = function toPatch (path) {
   // eslint-disable-next-line
   let urlRep = /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
   urlRep.test(path)
-  if (process.env.VUE_APP_btn === 'false' && !urlRep.test(path)) {
+  if (process.env.VUE_APP_btn === 'false' || !urlRep.test(path)) {
     return
   }
   window.location = path
