@@ -29,6 +29,12 @@ const mutations = {
   },
   setConfigTab (state, payload) {
     state.configTab = payload;
+  },
+  settextContent (state, payload) {
+    state.selectWg.value = payload
+  },
+  setStyle (state, payload) {
+    state.selectWg.style[payload.key] = payload.value
   }
 };
 
