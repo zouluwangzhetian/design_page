@@ -10,7 +10,8 @@ const state = {
     fixedCustom: [],
     style: {
       backgroundColor: '#fff',
-      backgroundImage: ''
+      width: '375px',
+      minHeight: '640px'
     }
   },
   selectIndex: 0,

@@ -15,7 +15,9 @@ export default [{
       link: 'https://www.baidu.com'
     }
   ],
-  interval: 3000,
+  interval: 3000, // 自动切换的时间间隔，单位为毫秒
+  card: '', // 类型可选值: ''/card, 
+  direction: 'horizontal', // 展示的方向可选值: horizontal/vertical, 
   style: {
     margin: '0px 0px 0px 0px',
     height: 'auto'

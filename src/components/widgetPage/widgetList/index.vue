@@ -1,6 +1,7 @@
 <template>
   <!-- :class="[item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]" -->
   <div 
+    class="widget-view"
     :class="{active:  selectWg.key === item.key}"
     @click.stop="handleSelectWidget">
     <component :is="wgMap[item.type]" :item="item" />
@@ -57,9 +58,21 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .active{
-    position: relative;
-    box-shadow: 0px 1px 10px 1px rgba(37, 83, 244, .5);
-    z-index: 100;
+  .widget-view{
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      display: block;
+      z-index: 1001;
+    }
+    &.active{
+      position: relative;
+      box-shadow: 0px 1px 10px 1px rgba(37, 83, 244, .5);
+      z-index: 100;
+    }
   }
 </style>

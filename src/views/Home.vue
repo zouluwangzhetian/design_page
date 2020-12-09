@@ -79,8 +79,7 @@ export default {
 </script>
 <style lang="less" scoped>
   .home{
-    // height: calc(100% - 70px);
-    height: 100%;
+    height: calc(100% - 70px);
     /deep/.el-container{
       height: 100%;
     }

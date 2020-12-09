@@ -1,7 +1,14 @@
 <template>
   <div class="wg-swiper">
     <div class="swiper-box" :style="{margin: item.style.margin}">
-      <el-carousel :style="{height: item.style.height}" arrow="never" :interval="item.interval" trigger="none">
+      <el-carousel 
+        arrow="never" 
+        trigger="none"
+        :type="item.card"
+        :direction="item.direction"
+        :style="{height: item.style.height}" 
+        :interval="item.interval" 
+      >
         <el-carousel-item v-for="(swiperItem, index) in item.value" :key="index">
           <img class="swiper-img" :src="swiperItem.img" alt="">
         </el-carousel-item>

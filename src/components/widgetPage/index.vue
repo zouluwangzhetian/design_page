@@ -4,6 +4,7 @@
       <Draggable
         v-model="pageData.list"
         class="components-list"
+        :style="{ width: pageData.style.width, minHeight: pageData.style.minHeight}"
         filter=".disdraggable"
         ghostClass="ghost"
         :animation="100"
@@ -44,6 +45,7 @@ export default {
       console.log('元素添加回调', e);
       this.$store.commit('widgetData/setSelectWg', this.pageData.list[e.newIndex])
       this.$store.commit('widgetData/setSelectIndex', e.newIndex)
+      this.$store.commit('widgetData/setConfigTab', 'widget')
     },
     dragEnd (e) {
       console.log('移动结束', e);
@@ -71,14 +73,14 @@ export default {
     }
     .widget-page{
       position: relative;
-      width: 375px;
-      min-height: 640px;
+      // width: 375px;
+      // min-height: 640px;
       margin: 20px auto;
       -webkit-box-shadow: 0 2px 5px 1px rgba(124,124,124,0.2);
       box-shadow: 0 2px 5px 1px rgba(124,124,124,0.2);
       cursor: default;
       .components-list{
-        min-height: 640px;
+        // min-height: 640px;
         /deep/li.ghost {
           position: relative;
           height: 40px;
