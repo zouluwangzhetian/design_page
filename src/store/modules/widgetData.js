@@ -36,6 +36,18 @@ const mutations = {
   },
   setConfigTab (state, payload) {
     state.configTab = payload;
+  },
+  settextContent (state, payload) {
+    state.selectWg.value = payload
+  },
+  setlineHeight (state, payload) {
+    state.selectWg.style.lineHeight = payload
+  },
+  setfontSize (state, payload) {
+    state.selectWg.style.fontSize = payload
+  },
+  setcolor (state, payload) {
+    state.selectWg.style.fontColor = payload
   }
 };
 

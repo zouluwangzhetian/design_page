@@ -6,6 +6,8 @@ export default [{
   backgroundColor: '',
   style: {
     margin: '0px 0px 0px 0px',
-    lineHeight: '1.6'
+    lineHeight: '1.6',
+    fontSize: '16',
+    fontColor: '#000000'
   }
 }]
