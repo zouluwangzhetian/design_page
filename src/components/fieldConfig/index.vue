@@ -9,8 +9,8 @@
       </div>
     </el-header>
     <el-main>
-      <page-config v-show="configTab=='page'"></page-config>
-      <widget-config v-show="configTab=='widget'"></widget-config>
+      <page-config v-if="configTab=='page'"></page-config>
+      <widget-config v-if="configTab=='widget'"></widget-config>
     </el-main>
   </div>
 </template>
@@ -18,7 +18,7 @@
 <script>
 import { mapState } from 'vuex';
 import pageConfig from './components/pageConfig'
-import widgetConfig from './components/widgetconfig'
+import widgetConfig from './components/wgConfig'
 
 export default {
   name: 'fieldConfig',
@@ -33,21 +33,22 @@ export default {
   },
   computed: {
     ...mapState({
-      configTab: (state) => state.pageConfig.configTab
+      configTab: (state) => state.widgetData.configTab,
+      selectWg: (state) => state.widgetData.selectWg
     })
   },
   methods: {
     handleConfigSelect (value) {
-      this.$store.commit('pageConfig/setConfigTab', value);
+      if (value === 'widget' && !this.selectWg.key) {
+        value = ''
+      }
+      this.$store.commit('widgetData/setConfigTab', value);
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-.el-form-item__label {
-  float: none;
-}
 .flex {
   border-bottom: solid 2px #e4e7ed;
   display: flex;
