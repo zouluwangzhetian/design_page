@@ -1,9 +1,5 @@
 <template>
   <div class="slide-bar-page">
-    <div class="text_content">
-      <label class="el-form-item__label">文本内容</label>
-      <el-input v-model="textContent" @change="setTextContent"></el-input>
-    </div>
     <div class="line_hight">
       <label class="el-form-item__label">行高</label>
       <el-input-number v-model="lineHightNum" :min="1" :max="10" :step="0.1" @change="setLineHeight"></el-input-number>
@@ -22,10 +18,9 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  name: 'textConfig',
+  name: 'textConfig2',
   data () {
     return {
-      textContent: '这是一段文本',
       lineHightNum: '1.6',
       fontSizeNum: '16',
       fontSizeColor: '#000'
@@ -40,17 +35,14 @@ export default {
     console.log(this.selectWg);
   },
   methods: {
-    setTextContent (value) {
-      this.$store.commit('widgetData/settextContent', value);
-    },
     setLineHeight (value) {
-      this.$store.commit('widgetData/setlineHeight', value);
+      this.$store.commit('widgetData/setStyle', { key: 'lineHeight', value });
     },
     setFontSize (value) {
-      this.$store.commit('widgetData/setfontSize', value);
+      this.$store.commit('widgetData/setStyle', { key: 'fontSize', value });
     },
     setColor (value) {
-      this.$store.commit('widgetData/setcolor', value);
+      this.$store.commit('widgetData/setStyle', { key: 'fontColor', value });
     }
   }
 };

@@ -2,11 +2,7 @@
   <div class="textConfig">
     <el-collapse v-model="activeName" accordion>
       <el-collapse-item title="基础设置" name="1">
-        <div class="text_content">
-          <label class="el-form-item__label">文本内容</label>
-          <el-input v-model="textContent" placeholder="请输入文本内容"></el-input>
-        </div>
-        <!-- <text-config></text-config> -->
+        <content-config></content-config>
       </el-collapse-item>
       <el-collapse-item title="外观样式" name="2">
         <div class="margin">
@@ -24,12 +20,14 @@
 </template>
 
 <script>
-import textConfig from './textConfig/index'
+import textConfig from './styleConfig/textConfig/index'
+import contentConfig from './contentConfig/textConfig/index'
 
 export default {
   name: 'widgetConfig',
   components: {
-    textConfig
+    textConfig,
+    contentConfig
   },
   data () {
     return {
