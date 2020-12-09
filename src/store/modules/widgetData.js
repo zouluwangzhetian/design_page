@@ -1,18 +1,7 @@
+import untils from '@/utils/index'
 const state = {
   pageData: {
-    list: [
-      // {
-      //   type: 'text',
-      //   name: '文本描述',
-      //   value: '这是一段文本',
-      //   link: '',
-      //   key: 123123123,
-      //   backgroundColor: '',
-      //   style: {
-      //     margin: '0px 0px 0px 0px'
-      //   }
-      // }
-    ],
+    list: [],
     title: '页面标题',
     statsCode: '',
     theme: 'theme1',
@@ -24,6 +13,7 @@ const state = {
       backgroundImage: ''
     }
   },
+  selectIndex: 0,
   // 当前点击选中的组件
   selectWg: {},
   configTab: ''
@@ -31,8 +21,10 @@ const state = {
 
 const mutations = {
   setSelectWg (state, payload) {
-    console.log(payload)
-    state.selectWg = payload
+    state.selectWg = untils.deepClone(payload)
+  },
+  setSelectIndex (state, payload) {
+    state.selectIndex = payload
   },
   setConfigTab (state, payload) {
     state.configTab = payload;
