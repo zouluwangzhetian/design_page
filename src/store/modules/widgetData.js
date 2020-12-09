@@ -25,13 +25,17 @@ const state = {
     }
   },
   // 当前点击选中的组件
-  selectWg: {}
+  selectWg: {},
+  configTab: ''
 };
 
 const mutations = {
   setSelectWg (state, payload) {
     console.log(payload)
     state.selectWg = payload
+  },
+  setConfigTab (state, payload) {
+    state.configTab = payload;
   }
 };
 
