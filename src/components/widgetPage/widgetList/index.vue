@@ -7,8 +7,8 @@
   >
     <component :is="wgMap[item.type]" :item="item" />
     <div class="tools-box">
-      <i class="icon el-icon-close"></i>
-      <i class="icon el-icon-document-copy"></i>
+      <i class="icon el-icon-close" @click.stop="removeWg"></i>
+      <i class="icon el-icon-document-copy" @click.stop="copyWg"></i>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
       type: Number,
       required: true
     },
-    data: {
+    list: {
       type: Array,
       required: true
     }
@@ -53,11 +53,43 @@ export default {
     })
   },
   methods: {
+    // 选中配置的组件
     handleSelectWidget () {
-      console.log('选中配置组件')
-      // setSelectWg
-      this.$store.commit('widgetData/setSelectWg', this.item)
-      this.$store.commit('widgetData/setConfigTab', 'widget')
+      this.storeMethods(this.item, 'widget', this.index)
+    },
+    // 移除配置的组件
+    removeWg () {
+      let list = [...this.list]
+      let index = this.index
+      let data = this.list[index + 1] || {}
+      let configTab = 'widget'
+      list.splice(this.index, 1)
+      if (!list.length) {
+        index = null 
+        data = {}
+        configTab = ''
+      }
+      if (this.list.length > 1 && this.index === (this.list.length - 1)) {
+        index = this.index - 1
+        data = this.list[index]
+      }
+      this.$store.commit('widgetData/setList', list)
+      this.storeMethods(data, configTab, index)
+    },
+    // 复制当前选中的组件
+    copyWg () {
+      const elKey = Date.now() + '_' + Math.ceil(Math.random() * 1000000);
+      let list = [...this.list]
+      let data = this.$util.deepClone(this.item)
+      data.key = data.type + '_' + elKey
+      list.splice(this.index + 1, 0, data)
+      this.$store.commit('widgetData/setList', list)
+      this.storeMethods(data, 'widget', this.index + 1)
+    },
+    storeMethods (wg, configTab, index) {
+      this.$store.commit('widgetData/setSelectWg', wg)
+      this.$store.commit('widgetData/setConfigTab', configTab)
+      this.$store.commit('widgetData/setSelectIndex', index)
     }
   }
 }
@@ -93,6 +125,9 @@ export default {
       background-color: rgba(36, 83, 244, .84);
       border-radius: 4px;
       z-index: 1010;
+      .icon{
+        cursor: pointer;
+      }
       .el-icon-document-copy{
         margin-left: 10px;
       }

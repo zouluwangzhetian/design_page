@@ -2,7 +2,6 @@ import untils from '@/utils/index'
 const setListDate = (state, payload) => {
   console.log(state.pageData.list);
   state.pageData.list.splice(state.selectIndex, 1, untils.deepClone(payload))
-  // state.pageData.list[state.selectIndex] = untils.deepClone(payload)
 }
 const state = {
   pageData: {
@@ -19,15 +18,20 @@ const state = {
       minHeight: '640px'
     }
   },
-  selectIndex: 0,
+  selectIndex: null,
   // 当前点击选中的组件
   selectWg: {},
   configTab: ''
 };
 
 const mutations = {
+  // 设置整体页面初始状态(beta版)
   setPageData (state, payload) {
     state.pageData = payload
+  },
+  // 设置组件列表
+  setList (state, payload) {
+    state.pageData.list = payload
   },
   // 选择的组件
   setSelectWg (state, payload) {
