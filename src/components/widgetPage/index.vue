@@ -15,7 +15,7 @@
         @start="dragStart"
       >
         <template v-for="(item,index) in pageData.list">
-          <Widget-list :key="item.key"  :data="pageData.list" :index="index" :item="item" />
+          <Widget-list :key="item.key"  :list="pageData.list" :index="index" :item="item" />
         </template>
       </Draggable>
     </div>
