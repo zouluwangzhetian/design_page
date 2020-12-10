@@ -1,5 +1,5 @@
 <template>
-  <div class="textConfig">
+  <div class="text-config">
     <el-collapse v-model="activeName" accordion>
       <el-collapse-item title="基础设置" name="1">
         <component :is="wgMap[this.selectWg.type]" />
@@ -26,8 +26,10 @@ export default {
   name: 'widgetConfig',
   components: {
     /* eslint-disable */
-    contentConfig: () => import('./contentConfig/textConfig/index'),
-    styleConfig: () => import('./styleConfig/textConfig/index')
+    textContent: () => import('./contentConfig/textConfig/index'), //文本基础属性
+    textStyle: () => import('./styleConfig/textConfig/index'), //文本样式属性
+    imgContent: () => import('./contentConfig/imgConfig/index'), //图片基础属性
+    imgStyle: () => import('./styleConfig/imgConfig/index') //图片样式属性
     /* eslint-enable */
   },
   data () {
@@ -35,10 +37,13 @@ export default {
       radio1: '正常',
       activeName: '1',
       wgMap: {
-        text: 'contentConfig'
+        text: 'textContent',
+        img: 'imgContent'
+        
       },
       wgMap1: {
-        text: 'styleConfig'
+        text: 'textStyle',
+        img: 'imgStyle'
       }
     };
   },

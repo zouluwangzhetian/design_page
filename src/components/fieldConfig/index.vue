@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="field-config">
     <el-header class="flex" height="45px">
       <div class="config-tab flex-auto" @click="handleConfigSelect('widget')">
         字段属性

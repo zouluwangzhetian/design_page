@@ -1,5 +1,5 @@
 <template>
-  <div class="slide-bar-page">
+  <div class="page-config">
     <div class="show_position">
       <label class="el-form-item__label">显示位置</label>
       <div class="el-form-item__group">
