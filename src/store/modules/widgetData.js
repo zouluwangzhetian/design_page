@@ -21,18 +21,25 @@ const state = {
 };
 
 const mutations = {
+  setPageData (state, payload) {
+    state.pageData = payload
+  },
+  // 选择的组件
   setSelectWg (state, payload) {
     state.selectWg = untils.deepClone(payload)
   },
+  // 选择的组件下标
   setSelectIndex (state, payload) {
     state.selectIndex = payload
   },
+  // 组件操作栏/页面操作栏切换
   setConfigTab (state, payload) {
     state.configTab = payload;
   },
   settextContent (state, payload) {
     state.selectWg.value = payload
   },
+  // 设置组件样式
   setStyle (state, payload) {
     state.selectWg.style[payload.key] = payload.value
   }

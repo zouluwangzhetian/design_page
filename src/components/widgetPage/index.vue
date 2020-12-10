@@ -14,9 +14,6 @@
         @end="dragEnd"
         @start="dragStart"
       >
-        <!-- <p>123123</p>
-        <p>456456</p>
-        <p>789789</p> -->
         <template v-for="(item,index) in pageData.list">
           <Widget-list :key="item.key"  :data="pageData.list" :index="index" :item="item" />
         </template>
@@ -79,6 +76,7 @@ export default {
       -webkit-box-shadow: 0 2px 5px 1px rgba(124,124,124,0.2);
       box-shadow: 0 2px 5px 1px rgba(124,124,124,0.2);
       cursor: default;
+      overflow: hidden;
       .components-list{
         // min-height: 640px;
         /deep/li.ghost {

@@ -61,6 +61,17 @@ export default {
     WidgetPage,
     fieldConfig
   },
+  computed: {
+    ...mapState('widgetData', {
+      pageData: state => state.pageData
+    })
+  },
+  created () {
+    const data = JSON.parse(localStorage.getItem('pageList'))
+    if (data) {
+      this.$store.commit('widgetData/setPageData', data)
+    }
+  },
   methods: {
     // 重置
     handleReset () {
@@ -72,7 +83,7 @@ export default {
     },
     // 保存
     handleSave () {
-
+      localStorage.setItem('pageList', JSON.stringify(this.pageData));
     }
   }
 }
@@ -93,6 +104,16 @@ export default {
       }
       .el-main{
         position: relative;
+      }
+    }
+    .test{
+      display: flex;
+      width: 500px;
+      height: 100px;
+      overflow-x: auto;
+      .div{
+        flex-shrink: 0;
+        width: 100px;
       }
     }
   }

@@ -79,7 +79,6 @@ export default {
       console.log(this.slideBar);
       this.slideBarSon = item;
       this.slideIndex = index;
-      console.log(this.pageData);
     },
     // 移动结束,清除拷贝数据
     dragEnd () {

@@ -3,8 +3,13 @@
   <div 
     class="widget-view"
     :class="{active:  selectWg.key === item.key}"
-    @click.stop="handleSelectWidget">
+    @click.stop="handleSelectWidget"
+  >
     <component :is="wgMap[item.type]" :item="item" />
+    <div class="tools-box">
+      <i class="icon el-icon-close"></i>
+      <i class="icon el-icon-document-copy"></i>
+    </div>
   </div>
 </template>
 
@@ -52,6 +57,7 @@ export default {
       console.log('选中配置组件')
       // setSelectWg
       this.$store.commit('widgetData/setSelectWg', this.item)
+      this.$store.commit('widgetData/setConfigTab', 'widget')
     }
   }
 }
@@ -59,6 +65,7 @@ export default {
 
 <style lang="less" scoped>
   .widget-view{
+    position: relative;
     &:after {
       content: '';
       position: absolute;
@@ -70,9 +77,25 @@ export default {
       z-index: 1001;
     }
     &.active{
-      position: relative;
       box-shadow: 0px 1px 10px 1px rgba(37, 83, 244, .5);
       z-index: 100;
+      .tools-box{
+        display: block;
+      }
+    }
+    .tools-box{
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 4px 10px;
+      color: #fff;
+      background-color: rgba(36, 83, 244, .84);
+      border-radius: 4px;
+      z-index: 1010;
+      .el-icon-document-copy{
+        margin-left: 10px;
+      }
     }
   }
 </style>
