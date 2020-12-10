@@ -1,4 +1,9 @@
 import untils from '@/utils/index'
+const setListDate = (state, payload) => {
+  console.log(state.pageData.list);
+  state.pageData.list.splice(state.selectIndex, 1, untils.deepClone(payload))
+  // state.pageData.list[state.selectIndex] = untils.deepClone(payload)
+}
 const state = {
   pageData: {
     list: [],
@@ -32,9 +37,12 @@ const mutations = {
   },
   settextContent (state, payload) {
     state.selectWg.value = payload
+    setListDate(state, state.selectWg)
   },
   setStyle (state, payload) {
+    console.log('111');
     state.selectWg.style[payload.key] = payload.value
+    setListDate(state, state.selectWg)
   }
 };
 

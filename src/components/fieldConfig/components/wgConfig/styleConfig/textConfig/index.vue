@@ -1,5 +1,5 @@
 <template>
-  <div class="slide-bar-page">
+  <div class="text-config2">
     <div class="line_hight">
       <label class="el-form-item__label">行高</label>
       <el-input-number v-model="lineHightNum" :min="1" :max="10" :step="0.1" @change="setLineHeight"></el-input-number>
@@ -39,10 +39,10 @@ export default {
       this.$store.commit('widgetData/setStyle', { key: 'lineHeight', value });
     },
     setFontSize (value) {
-      this.$store.commit('widgetData/setStyle', { key: 'fontSize', value });
+      this.$store.commit('widgetData/setStyle', { key: 'fontSize', value: `${value}px` });
     },
     setColor (value) {
-      this.$store.commit('widgetData/setStyle', { key: 'fontColor', value });
+      this.$store.commit('widgetData/setStyle', { key: 'color', value });
     }
   }
 };
