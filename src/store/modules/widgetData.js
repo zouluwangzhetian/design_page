@@ -41,13 +41,13 @@ const mutations = {
   setConfigTab (state, payload) {
     state.configTab = payload;
   },
+  // 设置文本框文字内容
   settextContent (state, payload) {
     state.selectWg.value = payload
     setListDate(state, state.selectWg)
   },
   // 设置组件样式
   setStyle (state, payload) {
-    console.log('111');
     state.selectWg.style[payload.key] = payload.value
     setListDate(state, state.selectWg)
   }
