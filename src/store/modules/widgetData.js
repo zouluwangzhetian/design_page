@@ -1,6 +1,5 @@
 import untils from '@/utils/index'
 const setListDate = (state, payload) => {
-  console.log(state.pageData.list);
   state.pageData.list.splice(state.selectIndex, 1, untils.deepClone(payload))
 }
 const state = {
@@ -50,9 +49,20 @@ const mutations = {
     state.selectWg.value = payload
     setListDate(state, state.selectWg)
   },
+  // 设置图片显示列数
+  setimgCol (state, payload) {
+    state.selectWg.col = payload
+    setListDate(state, state.selectWg)
+  },
   // 设置组件样式
   setStyle (state, payload) {
     state.selectWg.style[payload.key] = payload.value
+    setListDate(state, state.selectWg)
+  },
+  // 设置图片基础设置
+  setImgCt (state, payload) {
+    console.log(state.selectIndex);
+    state.selectWg.imglist[state.selectIndex].img = payload.s
     setListDate(state, state.selectWg)
   }
 };

@@ -1,18 +1,18 @@
 <template>
   <div class="img-config1">
-    <el-upload
-      action="https://upload.qiniup.com/"
-      list-type="picture-card"
-      :before-upload="beforeAvatarUpload"
-      :on-success="uploadImgSuccess"
-      :on-error="uploadImgError"
-      :show-file-list="false">
-      <img v-if="formCourse.cover" :src="formCourse.cover">
-      <i class="el-icon-plus">添加图片</i>
-    </el-upload>
-    <el-dialog :visible.sync="dialogVisible">
-      <img width="100%" :src="dialogImageUrl" alt="">
-    </el-dialog>
+    <div class="uploadImg">
+      <el-upload
+        action="https://jsonplaceholder.typicode.com/posts/"
+        list-type="picture-card"
+        :on-success="handlePictureCardPreview"
+        :on-remove="handleRemove">
+        <i class="el-icon-plus">添加图片</i>
+      </el-upload>
+    </div>
+    <div class="urlImg">
+      <label class="el-form-item__label">跳转链接</label>
+      <el-input :value="this.selectWg.imglist[0].link" @input="value=>$store.commit('widgetData/setImgCt', { key: 'margin', value })"></el-input>
+    </div>
   </div>
 </template>
 
@@ -22,11 +22,6 @@ export default {
   name: 'imgConfig1',
   data () {
     return {
-      dialogImageUrl: '',
-      dialogVisible: false,
-      formCourse: {
-        cover: ''
-      }
     };
   },
   computed: {
@@ -35,14 +30,12 @@ export default {
     })
   },
   methods: {
-    beforeAvatarUpload (file) {
-      console.log(file);
-    },
-    uploadImgSuccess (file, fileList) {
+    handleRemove (file, fileList) {
       console.log(file, fileList);
     },
-    uploadImgError (file, fileList) {
-      console.log(file, fileList);
+    handlePictureCardPreview (res, file, fileList) {
+      var s = file.url
+      this.$store.commit('widgetData/setImgCt', { key: 'img', s })
     }
   }
 };
@@ -52,9 +45,13 @@ export default {
 .el-upload--picture-card i {
   font-size: 14px
 }
-/deep/.el-upload { 
+/deep/.el-upload {
   width: 258px;
-  height: 91px;
-  line-height: 91px;
+  height: 148px;
+  line-height: 148px;
+}
+/deep/.el-upload-list__item{
+  width: 258px;
+  height: 148px;
 }
 </style>

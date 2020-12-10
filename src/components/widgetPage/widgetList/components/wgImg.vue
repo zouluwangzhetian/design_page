@@ -7,7 +7,12 @@
         class="img-box"
         :span="item.col"
       >
-        <img class="item-img" :style="item.style" :src="imgItem.img" @click="$toPatch(imgItem.link)"  />
+        <img 
+          class="item-img" 
+          :style="{ margin: item.style.margin, height: item.style.height + 'px', backgroundColor: item.style.backgroundColor }" 
+          :src="imgItem.img" 
+          @click="$toPatch(imgItem.link)"
+        />
       </el-col>
     </el-row>
   </div>

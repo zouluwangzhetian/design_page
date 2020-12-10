@@ -10,6 +10,7 @@ export default [{
   ],
   style: {
     margin: '0px 0px 0px 0px',
-    height: 'auto'
+    height: 250,
+    backgroundColor: ''
   }
 }]
