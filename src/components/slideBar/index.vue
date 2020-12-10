@@ -103,7 +103,7 @@ export default {
     display: flex;
     height: 100%;
     .slide-left{
-      width: 65px;
+      width: 75px;
       border-right: 1px solid #EEF2F8;
       .slide-item{
         margin-top: 10px;

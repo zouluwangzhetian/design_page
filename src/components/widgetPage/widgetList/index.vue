@@ -1,5 +1,4 @@
 <template>
-  <!-- :class="[item.wgClassName?item.wgClassName:'widget-view',{active: selectWg.key === item.key}]" -->
   <div 
     class="widget-view"
     :class="{active:  selectWg.key === item.key}"
@@ -35,15 +34,17 @@ export default {
     /* eslint-disable */
     WgText: () => import('./components/wgText'), // 文本组件
     WgImg: () => import('./components/wgImg'), // 图片组件
-    WgSwiper: () => import('./components/wgSwiper') // 轮播图组件
+    WgSwiper: () => import('./components/wgSwiper'), // 轮播图组件
+    wgCollapse: () => import('./components/wgCollapse') // 轮播图组件
     /* eslint-enable */
   },
   data () {
     return {
       wgMap: {
         text: 'WgText', // 文本选择
-        img: 'WgImg',
-        swiper: 'WgSwiper'
+        img: 'WgImg', // 图片组件
+        swiper: 'WgSwiper', // 轮播图组件
+        collapse: 'wgCollapse' // 轮播图组件
       }
     }
   },
@@ -55,6 +56,7 @@ export default {
   methods: {
     // 选中配置的组件
     handleSelectWidget () {
+      console.log('选中组件')
       this.storeMethods(this.item, 'widget', this.index)
     },
     // 移除配置的组件
@@ -98,16 +100,16 @@ export default {
 <style lang="less" scoped>
   .widget-view{
     position: relative;
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      display: block;
-      z-index: 1001;
-    }
+    // &:after {
+    //   content: '';
+    //   position: absolute;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   top: 0;
+    //   display: block;
+    //   z-index: 1001;
+    // }
     &.active{
       box-shadow: 0px 1px 10px 1px rgba(37, 83, 244, .5);
       z-index: 100;
