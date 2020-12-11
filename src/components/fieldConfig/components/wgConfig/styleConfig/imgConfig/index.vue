@@ -2,20 +2,20 @@
   <div class="img-config2">
     <div class="line_hight">
       <label class="el-form-item__label">高</label>
-      <el-input-number v-model="lineHightNum" :step="1" @change="setLineHeight"></el-input-number>
+      <el-input-number v-model="lineHightNum" :min="30" :max="800" :step="1" @change="setLineHeight"></el-input-number>
     </div>
     <div class="show_position">
       <label class="el-form-item__label">显示类型</label>
       <div class="el-form-item__group">
         <el-button-group>
           <el-button 
-            v-for="(item, index) in listType" 
+            v-for="(typeItem, index) in listType" 
             :key="index" 
             size="mini" 
-            :type="selectWg.col === item.value ? 'primary' : ''"
-            @click="clickType(item.value)"
+            :type="item.col === typeItem.value ? 'primary' : ''"
+            @click="clickType(typeItem.value)"
           >
-            {{item.label}}
+            {{typeItem.label}}
           </el-button>
         </el-button-group>
       </div>
@@ -24,9 +24,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'imgConfig2',
+  props: {
+    item: {
+      required: true,
+      type: Object
+    }
+  },
   data () {
     return {
       lineHightNum: 250,
@@ -49,11 +54,6 @@ export default {
         }
       ]
     };
-  },
-  computed: {
-    ...mapState({
-      selectWg: (state) => state.widgetData.selectWg
-    })
   },
   methods: {
     setLineHeight (value) {

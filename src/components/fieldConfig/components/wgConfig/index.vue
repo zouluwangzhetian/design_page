@@ -2,17 +2,17 @@
   <div class="text-config">
     <el-collapse v-model="activeName" accordion>
       <el-collapse-item title="基础设置" name="1">
-        <component :is="wgMap[this.selectWg.type]" />
+        <component :is="wgMap[selectWg.type]" :item="selectWg" />
       </el-collapse-item>
       <el-collapse-item title="外观样式" name="2">
-        <component :is="wgMap1[this.selectWg.type]" />
+        <component :is="wgMap1[selectWg.type]" :item="selectWg" />
         <div class="margin">
           <label class="el-form-item__label">外边距（上 右 下 左 、空格隔开）</label>
-          <el-input :value="this.selectWg.style.margin" @input="value=>$store.commit('widgetData/setStyle', { key: 'margin', value })"></el-input>
+          <el-input :value="selectWg.style.margin" @input="value=>$store.commit('widgetData/setStyle', { key: 'margin', value })"></el-input>
         </div>
         <div class="font_size">
           <label class="el-form-item__label">背景颜色</label>
-          <el-color-picker :value="this.selectWg.style.backgroundColor" @change="value=>$store.commit('widgetData/setStyle', { key: 'backgroundColor', value })"></el-color-picker>
+          <el-color-picker :value="selectWg.style.backgroundColor" @change="value=>$store.commit('widgetData/setStyle', { key: 'backgroundColor', value })"></el-color-picker>
         </div>
       </el-collapse-item>
     </el-collapse>
@@ -39,7 +39,6 @@ export default {
       wgMap: {
         text: 'textContent',
         img: 'imgContent'
-        
       },
       wgMap1: {
         text: 'textStyle',
