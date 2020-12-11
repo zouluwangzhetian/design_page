@@ -8,7 +8,8 @@
         :class="{'active': slideIndex === index}" 
         @click="clickBar(item, index)"
       >
-        <i class="el-icon-menu"></i>
+        <i class="icon" :class="item.icon"></i>
+        <!-- <i class="el-icon-menu"></i> -->
         <p class="slide-name">{{item.name}}</p>
       </div>
     </div>
@@ -110,7 +111,7 @@ export default {
         width: 100%;
         cursor: pointer;
         border-left: 2px solid transparent;
-        .el-icon-menu{
+        .icon{
           display: block;
           font-size: 20px;
           text-align: center;

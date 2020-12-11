@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import 'element-ui/lib/theme-chalk/index.css';
+import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 import {
   // Pagination,
   Dialog,
@@ -139,6 +140,7 @@ Vue.use(Main);
 Vue.use(Footer);
 
 Vue.use(Loading.directive);
+Vue.component(CollapseTransition.name, CollapseTransition)
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$msgbox = MessageBox;

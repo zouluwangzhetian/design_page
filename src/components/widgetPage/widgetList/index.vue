@@ -35,7 +35,8 @@ export default {
     WgText: () => import('./components/wgText'), // 文本组件
     WgImg: () => import('./components/wgImg'), // 图片组件
     WgSwiper: () => import('./components/wgSwiper'), // 轮播图组件
-    wgCollapse: () => import('./components/wgCollapse') // 轮播图组件
+    wgCollapse: () => import('./components/wgCollapse'), // 折叠面板组件
+    wgVideo: () => import('./components/wgVideo') // 视频组件
     /* eslint-enable */
   },
   data () {
@@ -44,7 +45,8 @@ export default {
         text: 'WgText', // 文本选择
         img: 'WgImg', // 图片组件
         swiper: 'WgSwiper', // 轮播图组件
-        collapse: 'wgCollapse' // 轮播图组件
+        collapse: 'wgCollapse', // 折叠面板组件
+        video: 'wgVideo' // 视频组件
       }
     }
   },
