@@ -6,7 +6,6 @@
       :style="{ marginTop: item.style.parentMargin + 'px'}"
       class="collapse-box"
     >
-      <!-- :style="{ marginTop: index !== 0? item.style.parentMargin + 'px': 'none'}" -->
       <img 
         class="collapse-img" 
         :src="collapseItem.img" 

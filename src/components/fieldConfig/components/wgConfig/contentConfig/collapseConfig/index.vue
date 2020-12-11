@@ -1,23 +1,23 @@
 <template>
   <div class="collapse-config">
     <div class="collapse-list">
+      123
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'collapseConfig1',
-  data () {
-    return {
-
+  poprs: {
+    item: {
+      required: true,
+      type: Object
     }
   },
-  computed: {
-    ...mapState('widgetData', {
-      pageData: state => state.pageData
-    })
+  data () {
+    return {
+    }
   }
 }
 </script>

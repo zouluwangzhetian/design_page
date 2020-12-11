@@ -26,10 +26,11 @@ export default {
   name: 'widgetConfig',
   components: {
     /* eslint-disable */
-    textContent: () => import('./contentConfig/textConfig/index'), //文本基础属性
-    textStyle: () => import('./styleConfig/textConfig/index'), //文本样式属性
-    imgContent: () => import('./contentConfig/imgConfig/index'), //图片基础属性
-    imgStyle: () => import('./styleConfig/imgConfig/index') //图片样式属性
+    textContent: () => import('./contentConfig/textConfig'), // 文本基础属性
+    textStyle: () => import('./styleConfig/textConfig'), // 文本样式属性
+    imgContent: () => import('./contentConfig/imgConfig'), // 图片基础属性
+    imgStyle: () => import('./styleConfig/imgConfig'), // 图片样式属性
+    collapseContent: () => import('./contentConfig/collapseConfig') // 折叠面板属性
     /* eslint-enable */
   },
   data () {
@@ -38,7 +39,8 @@ export default {
       activeName: '1',
       wgMap: {
         text: 'textContent',
-        img: 'imgContent'
+        img: 'imgContent',
+        collapse: 'collapseContent'
       },
       wgMap1: {
         text: 'textStyle',
