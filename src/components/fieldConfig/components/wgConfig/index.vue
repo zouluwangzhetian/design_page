@@ -46,9 +46,6 @@ export default {
       }
     };
   },
-  created () {
-    console.log('aaaaaaaaaa', this.selectWg);
-  },
   computed: {
     ...mapState({
       selectWg: (state) => state.widgetData.selectWg
