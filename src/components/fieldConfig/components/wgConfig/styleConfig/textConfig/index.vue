@@ -16,23 +16,20 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'textConfig2',
+  props: {
+    item: {
+      required: true,
+      type: Object
+    }
+  },
   data () {
     return {
       lineHightNum: '1.6',
       fontSizeNum: '16',
       fontSizeColor: '#000'
     };
-  },
-  computed: {
-    ...mapState({
-      selectWg: (state) => state.widgetData.selectWg
-    })
-  },
-  created () {
-    console.log(this.selectWg);
   },
   methods: {
     setLineHeight (value) {
