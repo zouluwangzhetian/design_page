@@ -1,10 +1,13 @@
 <template>
   <div class="file-upload">
     <el-upload
+      v-loading="loading"
       action="https://jsonplaceholder.typicode.com/posts/"
       list-type="picture"
       :show-file-list="false"
       :on-success="handleAvatarSuccess"
+      :on-error="handleAvatarError"
+      :before-upload="handleAvatarProgress"
       class="avatar-uploader"
     >
       <img v-if="img" :src="img" class="avatar" />
@@ -16,6 +19,11 @@
 <script>
 export default {
   name: 'fileUpload',
+  data () {
+    return {
+      loading: false
+    }
+  },
   props: {
     img: {
       type: String,
@@ -27,9 +35,17 @@ export default {
     }
   },
   methods: {
+    handleAvatarProgress () {
+      console.log('shangchuan qian')
+      this.loading = true;
+    },
     handleAvatarSuccess (res, file, fileList) {
       var fileUrl = file.url
       this.$store.commit('widgetData/setImgCt', { key: 'img', value: fileUrl, index: this.index })
+      this.loading = false;
+    },
+    handleAvatarError () {
+      this.loading = false;
     }
   }
 };

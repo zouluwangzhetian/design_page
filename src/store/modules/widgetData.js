@@ -2,12 +2,7 @@ import untils from '@/utils/index'
 const setListData = (state, payload) => {
   state.pageData.list.splice(state.selectIndex, 1, untils.deepClone(payload))
 }
-const setImgList = (state, { key, index, value }) => {
-  console.log(state.selectWg)
-  let data = untils.deepClone(state.selectWg.imglist[index])
-  data[key] = value
-  state.selectWg.imglist.splice(index, 1, data)
-}
+
 const state = {
   pageData: {
     list: [],
@@ -67,14 +62,21 @@ const mutations = {
   },
   // 设置图片基础设置
   setImgCt (state, { key, index, value }) {
-    setImgList(state, { key, index, value })
+    state.selectWg.imglist[index][key] = value
+    setListData(state, state.selectWg)
   },
   // 添加图片
-  addImgCt (state, payload) {
+  addImgCt (state) {
     state.selectWg.imglist.push({
       img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
       link: 'https://www.baidu.com'
     })
+    setListData(state, state.selectWg)
+  },
+  // 删除图片
+  delImgCt (state, payload) {
+    state.selectWg.imglist.splice(payload, 1)
+    setListData(state, state.selectWg)
   }
 };
 

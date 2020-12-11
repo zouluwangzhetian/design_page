@@ -60,7 +60,6 @@ export default {
       this.$store.commit('widgetData/setStyle', { key: 'height', value });
     },
     clickType (value) {
-      console.log(value);
       this.$store.commit('widgetData/setimgCol', value)
     }
   }
