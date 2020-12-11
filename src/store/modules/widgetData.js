@@ -1,6 +1,12 @@
 import untils from '@/utils/index'
-const setListDate = (state, payload) => {
+const setListData = (state, payload) => {
   state.pageData.list.splice(state.selectIndex, 1, untils.deepClone(payload))
+}
+const setImgList = (state, { key, index, value }) => {
+  console.log(state.selectWg)
+  let data = untils.deepClone(state.selectWg.imglist[index])
+  data[key] = value
+  state.selectWg.imglist.splice(index, 1, data)
 }
 const state = {
   pageData: {
@@ -47,23 +53,28 @@ const mutations = {
   // 设置文本框文字内容
   settextContent (state, payload) {
     state.selectWg.value = payload
-    setListDate(state, state.selectWg)
+    setListData(state, state.selectWg)
   },
   // 设置图片显示列数
   setimgCol (state, payload) {
     state.selectWg.col = payload
-    setListDate(state, state.selectWg)
+    setListData(state, state.selectWg)
   },
   // 设置组件样式
   setStyle (state, payload) {
     state.selectWg.style[payload.key] = payload.value
-    setListDate(state, state.selectWg)
+    setListData(state, state.selectWg)
   },
   // 设置图片基础设置
-  setImgCt (state, payload) {
-    console.log(state.selectIndex);
-    state.selectWg.imglist[state.selectIndex].img = payload.s
-    setListDate(state, state.selectWg)
+  setImgCt (state, { key, index, value }) {
+    setImgList(state, { key, index, value })
+  },
+  // 添加图片
+  addImgCt (state, payload) {
+    state.selectWg.imglist.push({
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      link: 'https://www.baidu.com'
+    })
   }
 };
 
