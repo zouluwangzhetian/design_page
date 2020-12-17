@@ -8,9 +8,14 @@ export default [{
     loop: false,
     controls: true
   },
+  backgroundImg: 'https://www.runoob.com/images/logo.png',
   style: {
     margin: '0px 0px 0px 0px',
     height: 200,
-    backgroundColor: ''
+    backgroundColor: '',
+    videoWidth: 100,
+    videoHeight: 100,
+    videoTop: 0,
+    videoLeft: 0
   }
 }]

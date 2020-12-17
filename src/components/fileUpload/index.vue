@@ -1,18 +1,13 @@
 <template>
   <div class="file-upload">
-    <el-upload
-      v-loading="loading"
-      action="https://jsonplaceholder.typicode.com/posts/"
-      list-type="picture"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :on-error="handleAvatarError"
-      :before-upload="handleAvatarProgress"
-      class="avatar-uploader"
-    >
-      <img v-if="img" :src="img" class="avatar" />
-      <i v-if="!img" class="el-icon-plus"></i>
-    </el-upload>
+    <div class="avatar-uploader" @click="clickUpload">
+      <div class="el-upload">
+        <img v-if="img" :src="img" class="avatar" />
+        <i v-else class="el-icon-plus"></i>
+      </div>
+    </div>
+    <input v-show="false" ref="uploadInput" type="file" @change="selectImg">
+    <p class="tips">请保证图片名称与交付开发者图片名称相同</p>
   </div>
 </template>
 
@@ -35,17 +30,21 @@ export default {
     }
   },
   methods: {
-    handleAvatarProgress () {
-      console.log('shangchuan qian')
-      this.loading = true;
+    clickUpload () {
+      this.$refs.uploadInput.click()
     },
-    handleAvatarSuccess (res, file, fileList) {
-      var fileUrl = file.url
-      this.$store.commit('widgetData/setImgCt', { key: 'img', value: fileUrl, index: this.index })
-      this.loading = false;
-    },
-    handleAvatarError () {
-      this.loading = false;
+    // input上传
+    selectImg (e) {
+      console.log(e.target.files)
+      let file = e.target.files || e.dataTransfer.files
+      console.log(file)
+      let fr = new FileReader()
+      fr.readAsDataURL(file[0])
+      fr.onload = () => {
+        console.log(fr.result)
+        this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr.result, index: this.index })
+        this.$store.commit('widgetData/setImgCt', { key: 'name', value: file[0].name, index: this.index })
+      }
     }
   }
 };
@@ -53,7 +52,11 @@ export default {
 
 <style lang="less" scoped>
 .file-upload{
-  height: 120px;
+  // height: 120px;
+  .tips{
+    margin-top: 5px;
+    text-align: center;
+  }
   /deep/.avatar-uploader{
     .el-upload {
       height: 120px;
@@ -68,14 +71,6 @@ export default {
     .el-upload:hover {
       border-color: #409eff;
     }
-  }
-  /deep/.avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
   }
   /deep/.avatar {
     width: 100%;

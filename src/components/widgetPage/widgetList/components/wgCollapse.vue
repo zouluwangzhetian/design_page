@@ -55,23 +55,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-  .wg-collapse{
-    width: 100%;
-    .collapse-box{
-      width: 100%;
-      .collapse-img{
-        display: block;
-        width: 100%;
-      }
-      .collapse-son-box{
-        width: 100%;
-        .collapse-son-img{
-          display: block;
-          width: 100%;
-        }
-      }
-    }
-  }
-</style>

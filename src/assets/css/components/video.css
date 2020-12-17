@@ -1,0 +1,15 @@
+.wg-video{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video-bg{
+  display: block;
+  width: 100%;
+}
+.video{
+  position: absolute;
+  z-index: 10;
+}

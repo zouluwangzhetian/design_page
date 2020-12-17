@@ -5,12 +5,6 @@ import Video from './config/video';
 
 export default [
   {
-    name: '文本',
-    value: 'text',
-    icon: 'el-icon-tickets',
-    data: Text
-  },
-  {
     name: '图片',
     value: 'img',
     icon: 'el-icon-picture-outline',
@@ -27,5 +21,11 @@ export default [
     value: 'video',
     icon: 'el-icon-video-camera-solid',
     data: Video
+  },
+  {
+    name: '文本',
+    value: 'text',
+    icon: 'el-icon-tickets',
+    data: Text
   }
 ]

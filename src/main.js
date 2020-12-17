@@ -6,7 +6,9 @@ import './plugins/element.js'
 import '@/assets/css/reset.css'
 import '@/assets/css/components/img.css'
 import '@/assets/css/components/text.css'
+import '@/assets/css/components/collapse.css'
 import '@/assets/css/components/swiper.css'
+import '@/assets/css/components/video.css'
 import util from './utils';
 
 Vue.config.productionTip = false

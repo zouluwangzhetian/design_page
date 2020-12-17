@@ -4,10 +4,19 @@
     :style="{ 
       height: item.style.height + 'px',
       margin:item.style.margin,
-      backgroundColor: item.style.backgroundColor
+      backgroundColor: item.style.backgroundColor,
     }"
   >
-    <video v-bind="item.videoAttr" style="width:100%;height:100%">您的浏览器不支持视频播放哦~</video>
+    <img class="video-bg" :src="item.backgroundImg" alt="">
+    <video 
+      class="video" 
+      v-bind="item.videoAttr" 
+      :width="item.style.videoWidth+'%'" 
+      :height="item.style.videoHeight+'%'"
+      :style="{ top: item.style.videoTop + '%', left: item.style.videoLeft + '%' }"
+    >
+      您的浏览器不支持视频播放哦~
+    </video>
   </div>
 </template>
 
@@ -22,7 +31,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>
