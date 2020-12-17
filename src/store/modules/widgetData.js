@@ -52,6 +52,7 @@ const mutations = {
   },
   // 设置图片显示列数
   setimgCol (state, payload) {
+    console.log('aaaa', payload);
     state.selectWg.col = payload
     setListData(state, state.selectWg)
   },

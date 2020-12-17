@@ -38,19 +38,11 @@ export default {
       listType: [
         {
           label: '单列',
-          value: 24
+          value: 1
         },
         {
           label: '双列',
-          value: 12
-        },
-        {
-          label: '三列',
-          value: 8
-        },
-        {
-          label: '四列',
-          value: 6
+          value: 2
         }
       ]
     };
@@ -60,6 +52,7 @@ export default {
       this.$store.commit('widgetData/setStyle', { key: 'height', value });
     },
     clickType (value) {
+      console.log(value);
       this.$store.commit('widgetData/setimgCol', value)
     }
   }
