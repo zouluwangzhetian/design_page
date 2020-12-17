@@ -30,7 +30,9 @@ export default {
     textStyle: () => import('./styleConfig/textConfig'), // 文本样式属性
     imgContent: () => import('./contentConfig/imgConfig'), // 图片基础属性
     imgStyle: () => import('./styleConfig/imgConfig'), // 图片样式属性
-    collapseContent: () => import('./contentConfig/collapseConfig') // 折叠面板属性
+    collapseContent: () => import('./contentConfig/collapseConfig'), // 折叠面板属性
+    swiperContent: () => import('./contentConfig/swiperConfig'), // 轮播图基础属性
+    swiperStyle: () => import('./styleConfig/swiperConfig') // 轮播图样式属性
     /* eslint-enable */
   },
   data () {
@@ -40,11 +42,13 @@ export default {
       wgMap: {
         text: 'textContent',
         img: 'imgContent',
-        collapse: 'collapseContent'
+        collapse: 'collapseContent',
+        swiper: 'swiperContent'
       },
       wgMap1: {
         text: 'textStyle',
-        img: 'imgStyle'
+        img: 'imgStyle',
+        swiper: 'swiperStyle'
       }
     };
   },

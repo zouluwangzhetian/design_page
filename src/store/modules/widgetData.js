@@ -78,6 +78,29 @@ const mutations = {
   delImgCt (state, payload) {
     state.selectWg.imglist.splice(payload, 1)
     setListData(state, state.selectWg)
+  },
+  // 设置轮播图基础设置
+  setSwiperCt (state, { key, index, value }) {
+    state.selectWg.value[index][key] = value
+    setListData(state, state.selectWg)
+  },
+  // 添加轮播图片
+  addSwiperCt (state) {
+    state.selectWg.value.push({
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      link: 'https://www.baidu.com'
+    })
+    setListData(state, state.selectWg)
+  },
+  // 删除轮播图片
+  delSwiperCt (state, payload) {
+    state.selectWg.value.splice(payload, 1)
+    setListData(state, state.selectWg)
+  },
+  // 设置轮播图基础设置
+  setSwiper (state, payload) {
+    state.selectWg[payload.key] = payload.value
+    setListData(state, state.selectWg)
   }
 };
 

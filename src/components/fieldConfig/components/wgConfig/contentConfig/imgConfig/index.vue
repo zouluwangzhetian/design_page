@@ -8,7 +8,7 @@
       <i class="el-icon-delete" @click="removeWg(index)"></i>
       <div class="upload-img">
         <label class="el-form-item__label">上传图片：</label>
-        <File-upload :img="typeItem.img" :index="index"></File-upload>
+        <el-input :value="typeItem.img" @input="value=>$store.commit('widgetData/setImgCt', { key: 'img', value, index })"></el-input>
       </div>
       <div class="url-img">
         <label class="el-form-item__label">跳转链接</label>
@@ -21,12 +21,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import FileUpload from '@/components/fileUpload'
 export default {
   name: 'imgConfig1',
-  components: {
-    FileUpload
-  },
   props: {
     item: {
       required: true,
