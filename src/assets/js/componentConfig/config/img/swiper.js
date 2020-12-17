@@ -16,10 +16,11 @@ export default [{
     }
   ],
   interval: 3000, // 自动切换的时间间隔，单位为毫秒
-  card: '', // 类型可选值: ''/card, 
-  direction: 'horizontal', // 展示的方向可选值: horizontal/vertical, 
+  pagination: false, // 是否展示底部分页器
+  loop: true, // 循环
+  disableOnInteraction: false, // 触碰之后保持自动轮播
   style: {
     margin: '0px 0px 0px 0px',
-    height: 'auto'
+    height: 250
   }
 }]

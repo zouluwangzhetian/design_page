@@ -39,13 +39,18 @@ export default {
     }
   },
   created () {
+    console.log(this.item)
+    let config = {
+      pagination: this.item.pagination ? { el: '.swiper-pagination' } : '',
+      loop: this.item.loop,
+      autoplay: {
+        delay: this.item.interval,
+        disableOnInteraction: this.item.disableOnInteraction
+      }
+    }
+    console.log(config)
     this.$nextTick(() => {
-      // eslint-disable-next-line
-      var swiper = new Swiper('.swiper-container', {
-        pagination: {
-          el: '.swiper-pagination'
-        }
-      });
+      var swiper = new window.Swiper('.swiper-container', config);
     })
   }
 }
