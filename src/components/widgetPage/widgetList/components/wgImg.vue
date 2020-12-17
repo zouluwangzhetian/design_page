@@ -1,6 +1,6 @@
 <template>
   <div class="wg-img">
-    <el-row>
+    <!-- <el-row>
       <el-col 
         v-for="(imgItem, index) in item.imglist"
         :key="index"
@@ -14,7 +14,24 @@
           @click="$toPatch(imgItem.link)"
         />
       </el-col>
-    </el-row>
+    </el-row> -->
+    <div
+      v-for="(imgItem, index) in item.imglist"
+      :key="index"
+      class="img-box"
+    >
+      <img 
+        class="item-img" 
+        :style="{ 
+          margin: item.style.margin, 
+          width: 100 / item.style.col + '%',
+          height: item.style.height + 'px', 
+          backgroundColor: item.style.backgroundColor 
+        }" 
+        :src="imgItem.img" 
+        @click="$toPatch(imgItem.link)"
+      />
+    </div>
   </div>
 </template>
 
@@ -30,10 +47,11 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-  .wg-img{
-    .item-img{
-      width: 100%;
-    }
+<style>
+  .img-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 </style>
