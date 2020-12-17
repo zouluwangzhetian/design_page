@@ -16,11 +16,11 @@
       </el-col>
     </el-row> -->
     <div
-      v-for="(imgItem, index) in item.imglist"
-      :key="index"
       class="img-box"
     >
       <img 
+        v-for="(imgItem, index) in item.imglist"
+        :key="index"
         class="item-img" 
         :style="{ 
           margin: item.style.margin, 
@@ -46,12 +46,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .img-box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="wg-swiper">
-    <div class="swiper-box" :style="{margin: item.style.margin}">
+    <!-- <div class="swiper-box" :style="{margin: item.style.margin}">
       <el-carousel 
         arrow="never" 
         trigger="none"
@@ -13,6 +13,18 @@
           <img class="swiper-img" :src="swiperItem.img" alt="">
         </el-carousel-item>
       </el-carousel>
+    </div> -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <img 
+          v-for="(swiperItem, index) in item.value" 
+          :key="index"
+          class="swiper-slide swiper-img" 
+          :src="swiperItem.img" alt=""
+        />
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </template>
@@ -25,15 +37,16 @@ export default {
       type: Object,
       required: true
     }
+  },
+  created () {
+    this.$nextTick(() => {
+      // eslint-disable-next-line
+      var swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination'
+        }
+      });
+    })
   }
 }
 </script>
-
-<style lang="less" scoped>
-  .wg-swiper{
-    .swiper-img{
-      width: 100%;
-      height: 100%;
-    }
-  }
-</style>
