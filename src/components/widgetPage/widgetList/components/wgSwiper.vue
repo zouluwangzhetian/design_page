@@ -17,7 +17,7 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <img 
-          v-for="(swiperItem, index) in item.value" 
+          v-for="(swiperItem, index) in item.imglist" 
           :key="index"
           class="swiper-slide swiper-img" 
           :src="swiperItem.img" alt=""
@@ -30,12 +30,19 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus/eventBus.js';
 export default {
   name: 'wgSwiper',
   props: {
     item: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      swiper: null,
+      destroyedSwiper: true
     }
   },
   created () {
@@ -46,12 +53,24 @@ export default {
       autoplay: {
         delay: this.item.interval,
         disableOnInteraction: this.item.disableOnInteraction
-      }
+      },
+      observer: true,
+      observeParents: true
     }
     console.log(config)
     this.$nextTick(() => {
-      var swiper = new window.Swiper('.swiper-container', config);
+      this.swiper = new window.Swiper('.swiper-container', config);
+      eventBus.$on('updateSwiper', data => {
+        this.attrSwiper(data)
+      });
     })
+  },
+  methods: {
+    attrSwiper (data) {
+      const dom = `<img class="swiper-slide swiper-img" src="${data.value}" />`
+      this.swiper.removeSlide(data.index)
+      this.swiper.addSlide(data.index, dom);
+    }
   }
 }
 </script>

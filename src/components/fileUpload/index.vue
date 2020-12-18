@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus/eventBus.js';
 export default {
   name: 'fileUpload',
   data () {
@@ -27,6 +28,10 @@ export default {
     index: {
       type: Number,
       required: true
+    },
+    type: {
+      type: String,
+      required: true
     }
   },
   methods: {
@@ -41,9 +46,13 @@ export default {
       let fr = new FileReader()
       fr.readAsDataURL(file[0])
       fr.onload = () => {
-        console.log(fr.result)
+        // console.log(fr.result)
+        console.log(this.type)
         this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr.result, index: this.index })
         this.$store.commit('widgetData/setImgCt', { key: 'name', value: file[0].name, index: this.index })
+        if (this.type === 'swiper') {
+          eventBus.$emit('updateSwiper', { index: this.index, value: fr.result });
+        }
       }
     }
   }

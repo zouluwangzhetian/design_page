@@ -8,7 +8,7 @@
       <i class="el-icon-delete" @click="removeWg(index)"></i>
       <div class="upload-img">
         <label class="el-form-item__label">上传图片：</label>
-        <File-upload :img="typeItem.img" :index="index"></File-upload>
+        <File-upload :img="typeItem.img" :index="index" :type="item.type"></File-upload>
       </div>
       <div class="url-img">
         <label class="el-form-item__label">跳转链接</label>
