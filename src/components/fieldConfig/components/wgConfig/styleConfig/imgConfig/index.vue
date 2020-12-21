@@ -2,7 +2,19 @@
   <div class="img-config2">
     <div class="line_hight">
       <label class="el-form-item__label">高</label>
-      <el-input-number v-model="lineHightNum" :min="30" :max="800" :step="1" @change="setLineHeight"></el-input-number>
+      <div class="el-form-item__group">
+        <el-button-group>
+          <el-button 
+            v-for="(typeItem, index) in heightType" 
+            :key="index" 
+            size="mini" 
+            @click="clickHeightType(typeItem.value)"
+          >
+            {{typeItem.label}}
+          </el-button>
+        </el-button-group>
+      </div>
+      <el-input-number v-if="this.selectHeight === 2" v-model="lineHightNum" :min="30" :max="800" :step="1" @change="setLineHeight"></el-input-number>
     </div>
     <div class="show_position">
       <label class="el-form-item__label">显示类型</label>
@@ -44,7 +56,18 @@ export default {
           label: '双列',
           value: 2
         }
-      ]
+      ],
+      heightType: [
+        {
+          label: '默认',
+          value: 1
+        },
+        {
+          label: '手动设置',
+          value: 2
+        }
+      ],
+      selectHeight: ''
     };
   },
   methods: {
@@ -54,6 +77,9 @@ export default {
     clickType (value) {
       console.log(value);
       this.$store.commit('widgetData/setimgCol', value)
+    },
+    clickHeightType (value) {
+      this.selectHeight = value
     }
   }
 };
@@ -68,5 +94,8 @@ export default {
 }
 .el-color-picker {
   display: block;
+}
+.el-form-item__group{
+  margin-bottom: 20px;
 }
 </style>
