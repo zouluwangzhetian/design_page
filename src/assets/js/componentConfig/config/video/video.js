@@ -4,10 +4,9 @@ export default [{
   videoAttr: {
     src: 'https://www.runoob.com/try/demo_source/movie.mp4',
     poster: 'https://www.runoob.com/images/logo.png',
-    autoplay: false,
-    loop: false,
     controls: true
   },
+  videoAttrName: '',
   backgroundImg: 'https://www.runoob.com/images/logo.png',
   style: {
     margin: '0px 0px 0px 0px',

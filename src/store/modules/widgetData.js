@@ -104,7 +104,7 @@ const mutations = {
   },
   // 设置视频基础设置
   setVideo (state, payload) {
-    state.selectWg[payload.key] = payload.value
+    state.selectWg.videoAttr[payload.key] = payload.value
     setListData(state, state.selectWg)
   }
 };
