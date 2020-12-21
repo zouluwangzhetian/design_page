@@ -18,7 +18,7 @@
     <el-button type="text" @click="addDomain">添加选项</el-button>
     <div class="line_hight">
       <label class="el-form-item__label">时间间隔</label>
-      <el-input-number v-model="intervalNum" :min="3000" :max="8000" :step="1000" @change="setSwiper"></el-input-number>
+      <el-input-number v-model="intervalNum" :min="1000" :max="8000" :step="1000" @change="setSwiper"></el-input-number>
     </div>
     <div class="line_hight">
       <label class="el-form-item__label">是否循环</label>
@@ -52,7 +52,7 @@
         </el-button-group>
       </div>
     </div>
-    <div class="line_hight">
+    <!-- <div class="line_hight">
       <label class="el-form-item__label">触碰之后保持自动轮播</label>
       <div class="el-form-item__group">
         <el-button-group>
@@ -67,13 +67,14 @@
           </el-button>
         </el-button-group>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import FileUpload from '@/components/fileUpload'
+import eventBus from '@/eventBus/eventBus.js';
 export default {
   name: 'swiperConfig1',
   components: {
@@ -109,9 +110,10 @@ export default {
   methods: {
     addDomain () {
       this.$store.commit('widgetData/addSwiperCt')
+      eventBus.$emit('updateSwiper', { type: 'add', index: this.index, value: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg' });
     },
     removeWg (index) {
-      if (this.item.value.length > 1) {
+      if (this.item.imglist.length > 1) {
         this.$store.commit('widgetData/delSwiperCt', index)
       } else {
         let list = [...this.pageData.list]
@@ -136,19 +138,23 @@ export default {
         this.$store.commit('widgetData/setSelectWg', data)
         this.$store.commit('widgetData/setConfigTab', configTab)
         this.$store.commit('widgetData/setSelectIndex', wgIndex)
+        eventBus.$emit('updateSwiper', { type: 'remove', index: this.index });
       }
     },
     setSwiper (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'interval', value });
+      eventBus.$emit('updateSwiper', { type: 'interval', index: this.index, value });
     },
     clickLoop (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'loop', value });
+      eventBus.$emit('updateSwiper', { type: 'loop', index: this.index, value });
     },
     clickPagination (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'pagination', value });
     },
     clickDisableOnInteraction (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'disableOnInteraction', value });
+      eventBus.$emit('updateSwiper', { type: 'disableOnInteraction', index: this.index, value });
     }
   }
 };

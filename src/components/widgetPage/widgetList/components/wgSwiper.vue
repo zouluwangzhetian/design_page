@@ -14,17 +14,25 @@
         </el-carousel-item>
       </el-carousel>
     </div> -->
-    <div class="swiper-container">
+    <div 
+      class="swiper-container"
+      :style="{
+        height: item.style.height + 'px',
+        margin: item.style.margin
+      }"
+    >
       <div class="swiper-wrapper">
         <img 
           v-for="(swiperItem, index) in item.imglist" 
           :key="index"
           class="swiper-slide swiper-img" 
-          :src="swiperItem.img" alt=""
+          :src="swiperItem.img" 
+          alt=""
         />
+        <!-- @click="$toPatch(swiperItem.link)" -->
       </div>
       <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
+      <div v-show="item.pagination" class="swiper-pagination"></div>
     </div>
   </div>
 </template>
@@ -41,14 +49,13 @@ export default {
   },
   data () {
     return {
-      swiper: null,
-      destroyedSwiper: true
+      swiper: null
     }
   },
   created () {
     console.log(this.item)
     let config = {
-      pagination: this.item.pagination ? { el: '.swiper-pagination' } : '',
+      pagination: { el: '.swiper-pagination' },
       loop: this.item.loop,
       autoplay: {
         delay: this.item.interval,
@@ -60,17 +67,28 @@ export default {
     console.log(config)
     this.$nextTick(() => {
       this.swiper = new window.Swiper('.swiper-container', config);
-      eventBus.$on('updateSwiper', data => {
-        this.attrSwiper(data)
-      });
     })
-  },
-  methods: {
-    attrSwiper (data) {
+    eventBus.$on('updateSwiper', data => {
+      console.log(data)
+      console.log(this.swiper)
       const dom = `<img class="swiper-slide swiper-img" src="${data.value}" />`
-      this.swiper.removeSlide(data.index)
-      this.swiper.addSlide(data.index, dom);
-    }
+      if (data.type === 'update') {
+        this.swiper.removeSlide(data.index)
+        this.swiper.addSlide(data.index, dom);
+      }
+      if (data.type === 'add') {
+        this.swiper.addSlide(data.index, dom);
+      }
+      if (data.type === 'remove') {
+        this.swiper.removeSlide(data.index)
+      }
+      if (data.type === 'interval') {
+        this.swiper.params.autoplay.delay = data.value
+      }
+      if (data.type === 'loop') {
+        this.swiper.params.loop = data.value
+      }
+    });
   }
 }
 </script>
