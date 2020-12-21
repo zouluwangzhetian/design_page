@@ -10,6 +10,7 @@ export default [{
     }
   ],
   style: {
+    isAuto: true,
     margin: '0px 0px 0px 0px',
     height: 250,
     backgroundColor: ''

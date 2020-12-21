@@ -20,6 +20,7 @@ export default [{
   loop: true, // 循环
   disableOnInteraction: false, // 触碰之后保持自动轮播
   style: {
+    isAuto: true,
     margin: '0px 0px 0px 0px',
     height: 250
   }

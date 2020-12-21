@@ -25,7 +25,7 @@
         :style="{ 
           margin: item.style.margin, 
           width: (100 / item.col) + '%',
-          height: item.style.height + 'px', 
+          height: item.style.isAuto ? 'auto' : item.style.height + 'px', 
           backgroundColor: item.style.backgroundColor 
         }" 
         :src="imgItem.img" 

@@ -17,7 +17,7 @@
     <div 
       class="swiper-container"
       :style="{
-        height: item.style.height + 'px',
+        height: item.style.isAuto ? 'auto' : item.style.height + 'px',
         margin: item.style.margin
       }"
     >
