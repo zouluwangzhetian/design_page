@@ -32,7 +32,9 @@ export default {
     imgStyle: () => import('./styleConfig/imgConfig'), // 图片样式属性
     collapseContent: () => import('./contentConfig/collapseConfig'), // 折叠面板属性
     swiperContent: () => import('./contentConfig/swiperConfig'), // 轮播图基础属性
-    swiperStyle: () => import('./styleConfig/swiperConfig') // 轮播图样式属性
+    swiperStyle: () => import('./styleConfig/swiperConfig'), // 轮播图样式属性
+    videoContent: () => import('./contentConfig/videoConfig'), // 视频基础属性
+    videoStyle: () => import('./styleConfig/videoConfig') // 视频样式属性
     /* eslint-enable */
   },
   data () {
@@ -43,12 +45,14 @@ export default {
         text: 'textContent',
         img: 'imgContent',
         collapse: 'collapseContent',
-        swiper: 'swiperContent'
+        swiper: 'swiperContent',
+        video: 'videoContent'
       },
       wgMap1: {
         text: 'textStyle',
         img: 'imgStyle',
-        swiper: 'swiperStyle'
+        swiper: 'swiperStyle',
+        video: 'videoStyle'
       }
     };
   },

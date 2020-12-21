@@ -1,5 +1,5 @@
 <template>
-  <div class="img-config1">
+  <div class="swiper-config1">
     <div 
       v-for="(typeItem, index) in item.imglist"
       :key="index"

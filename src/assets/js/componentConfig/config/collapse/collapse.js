@@ -3,23 +3,23 @@ export default [{
   name: '折叠面板',
   sonlist: [
     {
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      img: 'https://assets.aiyaopai.com//flyphoto/pctyss_3.jpg',
       list: [
         {
-          img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+          img: 'https://assets.aiyaopai.com//flyphoto/pcylyc_1.jpg',
           link: 'https://www.baidu.com'
         },
         {
-          img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+          img: 'https://assets.aiyaopai.com//flyphoto/pcylyc_2.jpg',
           link: 'https://www.baidu.com'
         }
       ]
     },
     {
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      img: 'https://assets.aiyaopai.com//invite/icon/icon_5.png',
       list: [
         {
-          img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+          img: 'https://assets.aiyaopai.com//invite/icon/icon_7.png',
           link: 'https://www.baidu.com'
         }
       ]
