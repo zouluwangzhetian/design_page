@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus/eventBus.js';
 export default {
   name: 'wgVideo',
   props: {
@@ -28,6 +29,14 @@ export default {
       type: Object,
       required: true
     }
+  },
+  created () {
+    eventBus.$on('updateSwiper', data => {
+      console.log(data)
+      if (data.type === 'poster') {
+        
+      }
+    });
   }
 }
 </script>

@@ -2,12 +2,14 @@
   <div class="file-upload">
     <div class="avatar-uploader" @click="clickUpload">
       <div class="el-upload">
-        <img v-if="img" :src="img" class="avatar" />
-        <i v-else class="el-icon-plus"></i>
+        <img v-if="img && fileType === 'img'" :src="img" class="avatar" />
+        <video v-if="img && fileType === 'video'" :src="img" class="video-file"></video>
+        <i v-show="img" class="el-icon-plus"></i>
       </div>
     </div>
     <input v-show="false" ref="uploadInput" type="file" @change="selectImg">
-    <p class="tips">请保证图片名称与交付开发者图片名称相同</p>
+    <p v-if="fileType === 'img'" class="tips">请保证图片名称与交付开发者图片名称相同</p>
+    <p v-else class="tips">请保证视频名称与交付开发者视频名称相同</p>
   </div>
 </template>
 
@@ -17,7 +19,6 @@ export default {
   name: 'fileUpload',
   data () {
     return {
-      loading: false
     }
   },
   props: {
@@ -32,6 +33,10 @@ export default {
     type: {
       type: String,
       required: true
+    },
+    fileType: {
+      type: String,
+      default: 'img'
     }
   },
   methods: {
@@ -46,8 +51,14 @@ export default {
       let fr = new FileReader()
       fr.readAsDataURL(file[0])
       fr.onload = () => {
-        // console.log(fr.result)
+        console.log(fr.result)
         console.log(this.type)
+        if (this.type === 'poster') {
+          this.$store.commit('widgetData/setVideo', { key: 'poster', value: fr.result });
+          this.$store.commit('widgetData/setVideo', { key: 'videoAttrName', value: file[0].name })
+          eventBus.$emit('updateVideo', { type: 'poster', value: fr.result });
+          return
+        }
         this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr.result, index: this.index })
         this.$store.commit('widgetData/setImgCt', { key: 'name', value: file[0].name, index: this.index })
         if (this.type === 'swiper') {
@@ -85,6 +96,10 @@ export default {
     width: 100%;
     height: 100%;
     display: block;
+  }
+  .video-file{
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

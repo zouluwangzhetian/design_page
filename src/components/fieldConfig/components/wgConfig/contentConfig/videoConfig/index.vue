@@ -1,6 +1,14 @@
 <template>
   <div class="video-config1">
-    <div class="file-upload">
+    <div class="upload-poster">
+      <label class="el-form-item__label">上传封面图：</label>
+      <File-upload :img="item.videoAttr.poster" :index="0" :type="'poster'"></File-upload>
+    </div>
+    <div class="upload-video">
+      <label class="el-form-item__label">上传视频：</label>
+      <File-upload :img="item.videoAttr.src" :index="0" :type="item.type" :fileType="'video'"></File-upload>
+    </div>
+    <!-- <div class="file-upload">
       <div class="avatar-uploader" @click="clickUpload">
         <div class="el-upload">
           <img v-if="item.videoAttr.poster" :src="item.videoAttr.poster" class="avatar" />
@@ -9,7 +17,7 @@
       </div>
       <input v-show="false" ref="uploadInput" type="file" @change="selectImg">
       <p class="tips">请保证图片名称与交付开发者图片名称相同</p>
-    </div>
+    </div> -->
 
     <div class="line_hight">
       <label class="el-form-item__label">是否循环</label>
@@ -64,8 +72,12 @@
 
 <script>
 import { mapState } from 'vuex';
+import FileUpload from '@/components/fileUpload'
 export default {
   name: 'videoConfig1',
+  components: {
+    FileUpload
+  },
   data () {
     return {
       listType: [
@@ -140,5 +152,8 @@ export default {
     .el-input-number {
       display: block;
     }
+  }
+  .upload-video{
+    margin-top: 10px;
   }
 </style>
