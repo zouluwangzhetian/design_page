@@ -18,7 +18,7 @@
     <el-button type="text" @click="addDomain">添加选项</el-button>
     <div class="line_hight">
       <label class="el-form-item__label">时间间隔</label>
-      <el-input-number v-model="intervalNum" :min="3000" :max="8000" :step="1000" @change="setSwiper"></el-input-number>
+      <el-input-number v-model="intervalNum" :min="1000" :max="8000" :step="1000" @change="setSwiper"></el-input-number>
     </div>
     <div class="line_hight">
       <label class="el-form-item__label">是否循环</label>
@@ -52,7 +52,7 @@
         </el-button-group>
       </div>
     </div>
-    <div class="line_hight">
+    <!-- <div class="line_hight">
       <label class="el-form-item__label">触碰之后保持自动轮播</label>
       <div class="el-form-item__group">
         <el-button-group>
@@ -67,7 +67,7 @@
           </el-button>
         </el-button-group>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -110,7 +110,7 @@ export default {
   methods: {
     addDomain () {
       this.$store.commit('widgetData/addSwiperCt')
-      eventBus.$emit('updateSwiper', { type: 'remove', index: this.index, value: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg' });
+      eventBus.$emit('updateSwiper', { type: 'add', index: this.index, value: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg' });
     },
     removeWg (index) {
       if (this.item.imglist.length > 1) {
@@ -143,15 +143,18 @@ export default {
     },
     setSwiper (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'interval', value });
+      eventBus.$emit('updateSwiper', { type: 'interval', index: this.index, value });
     },
     clickLoop (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'loop', value });
+      eventBus.$emit('updateSwiper', { type: 'loop', index: this.index, value });
     },
     clickPagination (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'pagination', value });
     },
     clickDisableOnInteraction (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'disableOnInteraction', value });
+      eventBus.$emit('updateSwiper', { type: 'disableOnInteraction', index: this.index, value });
     }
   }
 };
