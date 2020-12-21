@@ -74,6 +74,7 @@
 <script>
 import { mapState } from 'vuex';
 import FileUpload from '@/components/fileUpload'
+import eventBus from '@/eventBus/eventBus.js';
 export default {
   name: 'swiperConfig1',
   components: {
@@ -109,9 +110,10 @@ export default {
   methods: {
     addDomain () {
       this.$store.commit('widgetData/addSwiperCt')
+      eventBus.$emit('updateSwiper', { type: 'remove', index: this.index, value: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg' });
     },
     removeWg (index) {
-      if (this.item.value.length > 1) {
+      if (this.item.imglist.length > 1) {
         this.$store.commit('widgetData/delSwiperCt', index)
       } else {
         let list = [...this.pageData.list]
@@ -136,6 +138,7 @@ export default {
         this.$store.commit('widgetData/setSelectWg', data)
         this.$store.commit('widgetData/setConfigTab', configTab)
         this.$store.commit('widgetData/setSelectIndex', wgIndex)
+        eventBus.$emit('updateSwiper', { type: 'remove', index: this.index });
       }
     },
     setSwiper (value) {

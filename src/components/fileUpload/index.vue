@@ -51,7 +51,7 @@ export default {
         this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr.result, index: this.index })
         this.$store.commit('widgetData/setImgCt', { key: 'name', value: file[0].name, index: this.index })
         if (this.type === 'swiper') {
-          eventBus.$emit('updateSwiper', { index: this.index, value: fr.result });
+          eventBus.$emit('updateSwiper', { type: 'update', index: this.index, value: fr.result });
         }
       }
     }
