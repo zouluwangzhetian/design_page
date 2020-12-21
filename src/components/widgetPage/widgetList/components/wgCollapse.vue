@@ -9,7 +9,7 @@
       <img 
         class="collapse-img" 
         :src="collapseItem.img" 
-        :style="{ height: item.style.height + 'px' }" 
+        :style="{ height: item.style.isAuto ? 'auto' : item.style.height + 'px' }" 
         alt=""
         @click="showSon(index)"
       />
@@ -23,7 +23,7 @@
           class="collapse-son-img" 
           :src="sonItem.img" 
           :style="{
-            height: item.style.sonHeight + 'px',
+            height: item.style.isAuto ? 'auto' : item.style.height + 'px',
             marginTop: item.style.sonMargin + 'px'
           }" 
           alt=""

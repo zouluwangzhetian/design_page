@@ -79,7 +79,6 @@ export default {
       this.$store.commit('widgetData/setimgCol', value)
     },
     clickHeightType (value) {
-      // this.selectHeight = value
       this.$store.commit('widgetData/setStyle', { key: 'isAuto', value });
     }
   }

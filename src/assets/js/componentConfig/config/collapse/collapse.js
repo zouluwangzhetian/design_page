@@ -26,6 +26,7 @@ export default [{
     }
   ],
   style: {
+    isAuto: true,
     margin: '0px 0px 0px 0px',
     parentMargin: 11,
     sonMargin: 6.5,
