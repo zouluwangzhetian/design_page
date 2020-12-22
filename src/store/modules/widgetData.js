@@ -106,6 +106,27 @@ const mutations = {
   setVideo (state, payload) {
     state.selectWg.videoAttr[payload.key] = payload.value
     setListData(state, state.selectWg)
+  },
+  // 添加折叠面板儿子
+  addCollapseSonCt (state, index) {
+    state.selectWg.sonlist[index].list.push({
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      link: ''
+    })
+    setListData(state, state.selectWg)
+  },
+  // 添加折叠面板老子
+  addCollapseCt (state) {
+    state.selectWg.sonlist.push({
+      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      list: []
+    })
+    setListData(state, state.selectWg)
+  },
+  // 添加折叠面板子类链接
+  setCollapseCt (state, { index, value, sonIndex }) {
+    state.selectWg.sonlist[index].list[sonIndex].link = value
+    setListData(state, state.selectWg)
   }
 };
 

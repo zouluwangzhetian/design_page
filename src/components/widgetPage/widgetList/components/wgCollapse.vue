@@ -3,7 +3,6 @@
     <div 
       v-for="(collapseItem, index) in item.sonlist"
       :key="index"
-      :style="{ marginTop: item.style.parentMargin + 'px'}"
       class="collapse-box"
     >
       <img 
@@ -23,8 +22,7 @@
           class="collapse-son-img" 
           :src="sonItem.img" 
           :style="{
-            height: item.style.isAuto ? 'auto' : item.style.height + 'px',
-            marginTop: item.style.sonMargin + 'px'
+            height: item.style.isAuto ? 'auto' : item.style.height + 'px'
           }" 
           alt=""
           @click="$toPatch(sonItem.link)"
