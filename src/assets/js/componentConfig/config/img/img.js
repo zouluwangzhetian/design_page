@@ -1,3 +1,4 @@
+const img = require('@/assets/img/1.png')
 export default [{
   type: 'img',
   name: '图片展示',
@@ -5,8 +6,8 @@ export default [{
   imglist: [
     {
       name: '',
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
-      link: 'https://www.baidu.com'
+      img,
+      link: ''
     }
   ],
   style: {

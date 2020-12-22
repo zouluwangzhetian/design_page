@@ -1,26 +1,37 @@
+const fatherImg = require('@/assets/img/4.png')
+const partition = require('@/assets/img/5.png')
+const sonImg = require('@/assets/img/6.png')
 export default [{
   type: 'collapse',
   name: '折叠面板',
   sonlist: [
     {
-      img: 'https://assets.aiyaopai.com//flyphoto/pctyss_3.jpg',
+      img: fatherImg,
       list: [
         {
-          img: 'https://assets.aiyaopai.com//flyphoto/pcylyc_1.jpg',
-          link: 'https://www.baidu.com'
+          img: partition,
+          link: ''
         },
         {
-          img: 'https://assets.aiyaopai.com//flyphoto/pcylyc_2.jpg',
-          link: 'https://www.baidu.com'
+          img: sonImg,
+          link: ''
+        },
+        {
+          img: sonImg,
+          link: ''
         }
       ]
     },
     {
-      img: 'https://assets.aiyaopai.com//invite/icon/icon_5.png',
+      img: fatherImg,
       list: [
         {
-          img: 'https://assets.aiyaopai.com//invite/icon/icon_7.png',
-          link: 'https://www.baidu.com'
+          img: partition,
+          link: ''
+        },
+        {
+          img: sonImg,
+          link: ''
         }
       ]
     }

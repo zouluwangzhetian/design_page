@@ -1,14 +1,17 @@
+const bgImg = require('@/assets/img/2.png')
+const video = require('@/assets/img/视频.mp4')
+const poster = require('@/assets/img/视频.png')
 export default [{
   type: 'video',
   name: '视频',
   videoAttr: {
-    src: 'https://www.runoob.com/try/demo_source/movie.mp4', // 视频地址
-    poster: 'https://www.runoob.com/images/logo.png', // 视频头图
+    src: video, // 视频地址
+    poster, // 视频头图
     controls: true // 工具栏
   },
   posterName: '', // 头图文件名称
   videoName: '', // 视频名称
-  backgroundImg: 'https://www.runoob.com/images/logo.png', // 背景图
+  backgroundImg: bgImg, // 背景图
   style: {
     margin: '0px 0px 0px 0px',
     backgroundColor: '',
