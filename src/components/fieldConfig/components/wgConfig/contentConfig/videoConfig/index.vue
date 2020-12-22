@@ -8,35 +8,9 @@
       <label class="el-form-item__label">上传视频：</label>
       <File-upload :img="item.videoAttr.src" :index="0" :type="item.type" :fileType="'video'"></File-upload>
     </div>
-    <!-- <div class="file-upload">
-      <div class="avatar-uploader" @click="clickUpload">
-        <div class="el-upload">
-          <img v-if="item.videoAttr.poster" :src="item.videoAttr.poster" class="avatar" />
-          <i v-else class="el-icon-plus"></i>
-        </div>
-      </div>
-      <input v-show="false" ref="uploadInput" type="file" @change="selectImg">
-      <p class="tips">请保证图片名称与交付开发者图片名称相同</p>
-    </div> -->
 
     <div class="line_hight">
-      <label class="el-form-item__label">是否循环</label>
-      <div class="el-form-item__group">
-        <el-button-group>
-          <el-button 
-            v-for="(typeItem, index) in listType"
-            :key="index"
-            size="mini"
-            :type="item.videoAttr.loop === typeItem.value ? 'primary' : ''"
-            @click="clickLoop(typeItem.value)"
-          >
-            {{typeItem.label}}
-          </el-button>
-        </el-button-group>
-      </div>
-    </div>
-    <div class="line_hight">
-      <label class="el-form-item__label">是否controls</label>
+      <label class="el-form-item__label">展示功能栏</label>
       <div class="el-form-item__group">
         <el-button-group>
           <el-button
@@ -45,22 +19,6 @@
             size="mini"
             :type="item.videoAttr.controls === typeItem.value ? 'primary' : ''"
             @click="clickControls(typeItem.value)"
-          >
-            {{typeItem.label}}
-          </el-button>
-        </el-button-group>
-      </div>
-    </div>
-    <div class="line_hight">
-      <label class="el-form-item__label">自动播放</label>
-      <div class="el-form-item__group">
-        <el-button-group>
-          <el-button
-            v-for="(typeItem, index) in listType"
-            :key="index"
-            size="mini"
-            :type="item.videoAttr.autoplay === typeItem.value ? 'primary' : ''"
-            @click="clickAutoplay(typeItem.value)"
           >
             {{typeItem.label}}
           </el-button>
