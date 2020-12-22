@@ -53,10 +53,15 @@ export default {
       fr.onload = () => {
         console.log(fr.result)
         console.log(this.type)
-        if (this.type === 'poster') {
-          this.$store.commit('widgetData/setVideo', { key: 'poster', value: fr.result });
-          this.$store.commit('widgetData/setVideo', { key: 'videoAttrName', value: file[0].name })
-          eventBus.$emit('updateVideo', { type: 'poster', value: fr.result });
+        if (this.type === 'video') {
+          if (this.fileType === 'video') {
+            this.$store.commit('widgetData/setVideo', { key: 'src', value: fr.result });
+            this.$store.commit('widgetData/setVideo', { key: 'videoName', value: file[0].name })
+          } else {
+            this.$store.commit('widgetData/setVideo', { key: 'poster', value: fr.result });
+            this.$store.commit('widgetData/setVideo', { key: 'posterName', value: file[0].name })
+            eventBus.$emit('updateVideo', { type: 'poster', value: fr.result });
+          }
           return
         }
         this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr.result, index: this.index })

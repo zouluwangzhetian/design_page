@@ -2,7 +2,7 @@
   <div class="video-config1">
     <div class="upload-poster">
       <label class="el-form-item__label">上传封面图：</label>
-      <File-upload :img="item.videoAttr.poster" :index="0" :type="'poster'"></File-upload>
+      <File-upload :img="item.videoAttr.poster" :index="0" :type="item.type"></File-upload>
     </div>
     <div class="upload-video">
       <label class="el-form-item__label">上传视频：</label>

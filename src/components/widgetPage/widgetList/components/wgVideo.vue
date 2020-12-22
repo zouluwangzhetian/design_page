@@ -2,7 +2,6 @@
   <div 
     class="wg-video" 
     :style="{ 
-      height: item.style.height + 'px',
       margin:item.style.margin,
       backgroundColor: item.style.backgroundColor,
     }"
@@ -34,7 +33,7 @@ export default {
     eventBus.$on('updateSwiper', data => {
       console.log(data)
       if (data.type === 'poster') {
-        
+
       }
     });
   }
