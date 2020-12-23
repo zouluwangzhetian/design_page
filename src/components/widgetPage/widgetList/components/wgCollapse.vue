@@ -7,7 +7,7 @@
     }"
   >
     <div 
-      v-for="(collapseItem, index) in item.sonlist"
+      v-for="(collapseItem, index) in list"
       :key="index"
       class="collapse-box"
     >
@@ -20,7 +20,7 @@
       />
       <div 
         v-for="(sonItem, sonIndex) in collapseItem.list"
-        v-show="selectIndex === index"
+        v-show="collapseItem.expand"
         :key="sonIndex"
         class="collapse-son-box"
       >
@@ -49,12 +49,18 @@ export default {
   },
   data () {
     return {
-      selectIndex: null
+      list: []
     }
+  },
+  created () {
+    console.log(this.item)
+    this.list = [...this.item.sonlist]
+    console.log(this.list)
   },
   methods: {
     showSon (index) {
-      this.selectIndex = this.selectIndex !== index ? index : null
+      this.list[index].expand = !this.list[index].expand
+      // this.selectIndex = this.selectIndex !== index ? index : null
     }
   }
 }
