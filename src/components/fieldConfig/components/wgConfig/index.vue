@@ -8,7 +8,7 @@
         <component :is="wgMap1[selectWg.type]" :item="selectWg" />
         <div class="margin">
           <label class="el-form-item__label">外边距（上 右 下 左 、空格隔开）</label>
-          <el-input :value="selectWg.style.margin" @input="value=>$store.commit('widgetData/setStyle', { key: 'margin', value })"></el-input>
+          <el-input size="mini" :value="selectWg.style.margin" @input="value=>$store.commit('widgetData/setStyle', { key: 'margin', value })"></el-input>
         </div>
         <div class="font_size">
           <label class="el-form-item__label">背景颜色</label>

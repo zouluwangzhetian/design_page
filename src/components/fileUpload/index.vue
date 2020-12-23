@@ -1,7 +1,7 @@
 <template>
   <div class="file-upload">
-    <div class="avatar-uploader" @click="clickUpload">
-      <div class="el-upload">
+    <div class="avatar-uploader">
+      <div class="el-upload" @click="clickUpload">
         <img v-if="img && fileType === 'img'" :src="img" class="avatar" />
         <video v-if="img && fileType === 'video'" :src="img" class="video-file"></video>
         <i v-show="img" class="el-icon-plus"></i>

@@ -12,7 +12,7 @@
       </div>
       <div class="url-img">
         <label class="el-form-item__label">跳转链接</label>
-        <el-input :value="typeItem.link" @input="value=>$store.commit('widgetData/setImgCt', { key: 'link', value, index })"></el-input>
+        <el-input size="mini" :value="typeItem.link" @input="value=>$store.commit('widgetData/setImgCt', { key: 'link', value, index })"></el-input>
       </div>
     </div>
     <el-button type="text" @click="addDomain">添加选项</el-button>
