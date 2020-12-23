@@ -60,14 +60,16 @@ export default {
       await eventBus.$emit('updateCollapse');
     },
     // 父类
-    commitImg ({ fr, name, index }) {
-      this.$store.commit('widgetData/setCollapseFatherCt', { key: 'img', value: fr, index })
-      this.$store.commit('widgetData/setCollapseFatherCt', { key: 'name', value: name, index })
+    async commitImg ({ fr, name, index }) {
+      await this.$store.commit('widgetData/setCollapseFatherCt', { key: 'img', value: fr, index })
+      await this.$store.commit('widgetData/setCollapseFatherCt', { key: 'name', value: name, index })
+      await eventBus.$emit('updateCollapse');
     },
     // 子类
-    commitImg1 ({ fr, name, index, sonIndex }) {
-      this.$store.commit('widgetData/setCollapseSonCt', { key: 'img', value: fr, index, sonIndex })
-      this.$store.commit('widgetData/setCollapseSonCt', { key: 'name', value: name, index, sonIndex })
+    async commitImg1 ({ fr, name, index, sonIndex }) {
+      await this.$store.commit('widgetData/setCollapseSonCt', { key: 'img', value: fr, index, sonIndex })
+      await this.$store.commit('widgetData/setCollapseSonCt', { key: 'name', value: name, index, sonIndex })
+      await eventBus.$emit('updateCollapse');
     },
     // 删除父类
     async removeFatherWg (index) {
