@@ -30,13 +30,13 @@ export default {
       type: Number,
       required: true
     },
-    type: {
-      type: String,
-      required: true
-    },
     fileType: {
       type: String,
       default: 'img'
+    },
+    commitFun: {
+      type: Function,
+      required: true
     }
   },
   methods: {
@@ -45,30 +45,14 @@ export default {
     },
     // input上传
     selectImg (e) {
-      console.log(e.target.files)
+      // console.log(e.target.files)
       let file = e.target.files || e.dataTransfer.files
-      console.log(file)
+      // console.log(file)
       let fr = new FileReader()
       fr.readAsDataURL(file[0])
       fr.onload = () => {
-        console.log(fr.result)
-        console.log(this.type)
-        if (this.type === 'video') {
-          if (this.fileType === 'video') {
-            this.$store.commit('widgetData/setVideo', { key: 'src', value: fr.result });
-            this.$store.commit('widgetData/setVideo', { key: 'videoName', value: file[0].name })
-          } else {
-            this.$store.commit('widgetData/setVideo', { key: 'poster', value: fr.result });
-            this.$store.commit('widgetData/setVideo', { key: 'posterName', value: file[0].name })
-            eventBus.$emit('updateVideo', { type: 'poster', value: fr.result });
-          }
-          return
-        }
-        this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr.result, index: this.index })
-        this.$store.commit('widgetData/setImgCt', { key: 'name', value: file[0].name, index: this.index })
-        if (this.type === 'swiper') {
-          eventBus.$emit('updateSwiper', { type: 'update', index: this.index, value: fr.result });
-        }
+        // console.log(fr.result)
+        this.commitFun({ fr: fr.result, name: file[0].name, index: this.index })
       }
     }
   }

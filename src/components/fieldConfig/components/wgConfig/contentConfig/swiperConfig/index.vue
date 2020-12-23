@@ -8,7 +8,7 @@
       <i class="el-icon-delete" @click="removeWg(index)"></i>
       <div class="upload-img">
         <label class="el-form-item__label">上传图片：</label>
-        <File-upload :img="typeItem.img" :index="index" :type="item.type"></File-upload>
+        <File-upload :img="typeItem.img" :index="index" :commitFun="commitSwiper"></File-upload>
       </div>
       <div class="url-img">
         <label class="el-form-item__label">跳转链接</label>
@@ -140,6 +140,11 @@ export default {
         this.$store.commit('widgetData/setSelectIndex', wgIndex)
         eventBus.$emit('updateSwiper', { type: 'remove', index: this.index });
       }
+    },
+    commitSwiper ({ fr, name, index }) {
+      this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr, index })
+      this.$store.commit('widgetData/setImgCt', { key: 'name', value: name, index })
+      eventBus.$emit('updateSwiper', { type: 'update', index, value: fr });
     },
     setSwiper (value) {
       this.$store.commit('widgetData/setSwiper', { key: 'interval', value });

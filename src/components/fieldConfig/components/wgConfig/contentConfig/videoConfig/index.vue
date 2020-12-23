@@ -2,11 +2,11 @@
   <div class="video-config1">
     <div class="upload-poster">
       <label class="el-form-item__label">上传封面图：</label>
-      <File-upload :img="item.videoAttr.poster" :index="0" :type="item.type"></File-upload>
+      <File-upload :img="item.videoAttr.poster" :index="0" :commitFun="commitPoster"></File-upload>
     </div>
     <div class="upload-video">
       <label class="el-form-item__label">上传视频：</label>
-      <File-upload :img="item.videoAttr.src" :index="0" :type="item.type" :fileType="'video'"></File-upload>
+      <File-upload :img="item.videoAttr.src" :index="0" :fileType="'video'" :commitFun="commitVideo"></File-upload>
     </div>
 
     <div class="line_hight">
@@ -66,17 +66,15 @@ export default {
     clickUpload () {
       this.$refs.uploadInput.click()
     },
-    // input上传
-    selectImg (e) {
-      console.log(e)
-      // let file = e.target.files || e.dataTransfer.files
-      // console.log(file)
-      // let fr = new FileReader()
-      // fr.readAsDataURL(file[0])
-      // fr.onload = () => {
-      //   console.log(this.type)
-      //   this.$store.commit('widgetData/setImgCt', { key: 'img', value: fr.result, index: this.index })
-      // }
+    // 提交视频
+    commitVideo ({ fr, name }) {
+      this.$store.commit('widgetData/setVideo', { key: 'src', value: fr });
+      this.$store.commit('widgetData/setVideo', { key: 'videoName', value: name })
+    },
+    // 提交封面图
+    commitPoster ({ fr, name }) {
+      this.$store.commit('widgetData/setVideo', { key: 'poster', value: fr });
+      this.$store.commit('widgetData/setVideo', { key: 'posterName', value: name })
     },
     clickLoop (value) {
       this.$store.commit('widgetData/setVideo', { key: 'loop', value });
