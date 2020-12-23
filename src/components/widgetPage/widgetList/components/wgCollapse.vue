@@ -58,6 +58,8 @@ export default {
     this.list = [...this.item.sonlist]
     eventBus.$on('updateCollapse', data => {
       this.list = [...this.item.sonlist]
+      console.log(this.item)
+      console.log(this.list)
     });
     console.log(this.list)
   },

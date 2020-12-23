@@ -51,28 +51,29 @@ export default {
     })
   },
   methods: {
-    addDomain (index) {
-      this.$store.commit('widgetData/addCollapseSonCt', index)
+    async addDomain (index) {
+      await this.$store.commit('widgetData/addCollapseSonCt', index)
+      await eventBus.$emit('updateCollapse');
     },
-    addDomain1 () {
-      this.$store.commit('widgetData/addCollapseCt')
+    async addDomain1 () {
+      await this.$store.commit('widgetData/addCollapseCt')
+      await eventBus.$emit('updateCollapse');
     },
     // 父类
     commitImg ({ fr, name, index }) {
       this.$store.commit('widgetData/setCollapseFatherCt', { key: 'img', value: fr, index })
       this.$store.commit('widgetData/setCollapseFatherCt', { key: 'name', value: name, index })
-      eventBus.$emit('updateCollapse');
     },
     // 子类
     commitImg1 ({ fr, name, index, sonIndex }) {
       this.$store.commit('widgetData/setCollapseSonCt', { key: 'img', value: fr, index, sonIndex })
       this.$store.commit('widgetData/setCollapseSonCt', { key: 'name', value: name, index, sonIndex })
-      eventBus.$emit('updateCollapse');
     },
     // 删除父类
-    removeFatherWg (index) {
+    async removeFatherWg (index) {
       if (this.item.sonlist.length > 1) {
-        this.$store.commit('widgetData/delCollapseFatherCt', index)
+        await this.$store.commit('widgetData/delCollapseFatherCt', index)
+        await eventBus.$emit('updateCollapse');
       } else {
         let list = [...this.pageData.list]
         let wgIndex = this.selectIndex
@@ -99,8 +100,9 @@ export default {
       }
     },
     // 删除子类
-    removeSonWg ({ index, sonIndex }) {
-      this.$store.commit('widgetData/delCollapseSonCt', index, sonIndex)
+    async removeSonWg ({ index, sonIndex }) {
+      await this.$store.commit('widgetData/delCollapseSonCt', index, sonIndex)
+      await eventBus.$emit('updateCollapse');
     }
   }
 }
