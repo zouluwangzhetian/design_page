@@ -84,9 +84,12 @@ export default {
     // 保存
     handleSave () {
       // localStorage.setItem('pageList', JSON.stringify(this.pageData));
+      // aLink.download = fileName;
+      // aLink.href = "data:text/plain," + content;
       let aDom = document.createElement('a');
       aDom.download = 'desing_config.js';
-      let blob = new Blob([JSON.stringify(this.pageData)]);
+      // aDom.href = 'data:text/plain,' + JSON.stringify(this.pageData);
+      let blob = new Blob(['let pageData = ' + JSON.stringify(this.pageData)]);
       aDom.href = URL.createObjectURL(blob)
       aDom.click()
     }
