@@ -1,18 +1,21 @@
+const swiper1 = require('@/assets/img/swiper1.png')
+const swiper2 = require('@/assets/img/swiper2.png')
+const swiper3 = require('@/assets/img/swiper3.png')
 export default [{
   type: 'swiper',
   name: '图片轮播',
   imglist: [
     {
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
-      link: 'https://www.baidu.com'
+      img: swiper1,
+      link: ''
     },
     {
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
-      link: 'https://www.baidu.com'
+      img: swiper2,
+      link: ''
     },
     {
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
-      link: 'https://www.baidu.com'
+      img: swiper3,
+      link: ''
     }
   ],
   interval: 3000, // 自动切换的时间间隔，单位为毫秒
