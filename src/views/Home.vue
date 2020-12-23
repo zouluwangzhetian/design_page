@@ -16,7 +16,7 @@
           >
             重置
           </el-button>
-          <el-button
+          <!-- <el-button
             class="main-btn"
             icon="el-icon-view"
             size="medium"
@@ -24,7 +24,7 @@
             @click="handlePreview()"
           >
             预览
-          </el-button>
+          </el-button> -->
           <el-button
             class="main-btn"
             icon="el-icon-document"
@@ -83,7 +83,12 @@ export default {
     },
     // 保存
     handleSave () {
-      localStorage.setItem('pageList', JSON.stringify(this.pageData));
+      // localStorage.setItem('pageList', JSON.stringify(this.pageData));
+      let aDom = document.createElement('a');
+      aDom.download = 'desing_config.js';
+      let blob = new Blob([JSON.stringify(this.pageData)]);
+      aDom.href = URL.createObjectURL(blob)
+      aDom.click()
     }
   }
 }
