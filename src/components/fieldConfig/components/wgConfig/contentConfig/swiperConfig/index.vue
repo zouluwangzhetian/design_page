@@ -75,6 +75,7 @@
 import { mapState } from 'vuex';
 import FileUpload from '@/components/fileUpload'
 import eventBus from '@/eventBus/eventBus.js';
+const swiper1 = require('@/assets/img/swiper1.png')
 export default {
   name: 'swiperConfig1',
   components: {
@@ -110,7 +111,7 @@ export default {
   methods: {
     addDomain () {
       this.$store.commit('widgetData/addSwiperCt')
-      eventBus.$emit('updateSwiper', { type: 'add', index: this.index, value: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg' });
+      eventBus.$emit('updateSwiper', { type: 'add', index: this.index, value: swiper1 });
     },
     removeWg (index) {
       if (this.item.imglist.length > 1) {

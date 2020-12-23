@@ -29,6 +29,7 @@
 
 <script>
 import FileUpload from '@/components/fileUpload'
+import eventBus from '@/eventBus/eventBus.js';
 export default {
   name: 'collapseConfig1',
   components: {
@@ -51,11 +52,13 @@ export default {
     commitImg ({ fr, name, index }) {
       this.$store.commit('widgetData/setCollapseFatherCt', { key: 'img', value: fr, index })
       this.$store.commit('widgetData/setCollapseFatherCt', { key: 'name', value: name, index })
+      eventBus.$emit('updateCollapse');
     },
     // 子类
     commitImg1 ({ fr, name, index, sonIndex }) {
       this.$store.commit('widgetData/setCollapseSonCt', { key: 'img', value: fr, index, sonIndex })
       this.$store.commit('widgetData/setCollapseSonCt', { key: 'name', value: name, index, sonIndex })
+      eventBus.$emit('updateCollapse');
     }
   }
 }

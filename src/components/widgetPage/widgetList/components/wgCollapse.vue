@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus/eventBus.js';
 export default {
   name: 'wgCollapse',
   props: {
@@ -55,6 +56,9 @@ export default {
   created () {
     console.log(this.item)
     this.list = [...this.item.sonlist]
+    eventBus.$on('updateCollapse', data => {
+      this.list = [...this.item.sonlist]
+    });
     console.log(this.list)
   },
   methods: {

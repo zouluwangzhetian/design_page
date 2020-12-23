@@ -1,4 +1,6 @@
 import untils from '@/utils/index'
+const img = require('@/assets/img/1.png')
+const swiper1 = require('@/assets/img/swiper1.png')
 const setListData = (state, payload) => {
   state.pageData.list.splice(state.selectIndex, 1, untils.deepClone(payload))
 }
@@ -73,8 +75,8 @@ const mutations = {
   // 添加图片
   addImgCt (state) {
     state.selectWg.imglist.push({
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
-      link: 'https://www.baidu.com'
+      img: img,
+      link: ''
     })
     setListData(state, state.selectWg)
   },
@@ -91,8 +93,8 @@ const mutations = {
   // 添加轮播图片
   addSwiperCt (state) {
     state.selectWg.imglist.push({
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
-      link: 'https://www.baidu.com'
+      img: swiper1,
+      link: ''
     })
     setListData(state, state.selectWg)
   },
