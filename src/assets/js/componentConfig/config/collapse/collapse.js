@@ -7,6 +7,7 @@ export default [{
     {
       name: '',
       img: fatherImg,
+      expand: true,
       list: [
         {
           name: '',
@@ -23,6 +24,7 @@ export default [{
     {
       name: '',
       img: fatherImg,
+      expand: true,
       list: [
         {
           name: '',
