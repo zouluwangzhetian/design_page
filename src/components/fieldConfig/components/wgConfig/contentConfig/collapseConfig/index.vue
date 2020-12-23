@@ -5,6 +5,7 @@
       :key="index"
       class="img_content"
     >
+      <i class="el-icon-delete" @click="removeFatherWg(index)"></i>
       <div class="upload-img">
         <File-upload :img="typeItem.img" :index="index"  :commitFun="commitImg"></File-upload>
       </div>
@@ -13,6 +14,7 @@
         :key="sonIndex"
         class="collapse-child"
       >
+        <i class="el-icon-delete" @click="removeSonWg({index, sonIndex })"></i>
         <div class="upload-son-img">
           <File-upload :img="sonItem.img" :index="index" :sonIndex="sonIndex" :commitFun="commitImg1"></File-upload>
         </div>
@@ -28,6 +30,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import FileUpload from '@/components/fileUpload'
 import eventBus from '@/eventBus/eventBus.js';
 export default {
@@ -40,6 +43,12 @@ export default {
       required: true,
       type: Object
     }
+  },
+  computed: {
+    ...mapState('widgetData', {
+      pageData: state => state.pageData,
+      selectIndex: state => state.selectIndex
+    })
   },
   methods: {
     addDomain (index) {
@@ -59,6 +68,39 @@ export default {
       this.$store.commit('widgetData/setCollapseSonCt', { key: 'img', value: fr, index, sonIndex })
       this.$store.commit('widgetData/setCollapseSonCt', { key: 'name', value: name, index, sonIndex })
       eventBus.$emit('updateCollapse');
+    },
+    // 删除父类
+    removeFatherWg (index) {
+      if (this.item.sonlist.length > 1) {
+        this.$store.commit('widgetData/delCollapseFatherCt', index)
+      } else {
+        let list = [...this.pageData.list]
+        let wgIndex = this.selectIndex
+        let data = this.pageData.list[wgIndex + 1] || {}
+        let configTab = 'widget'
+        list.splice(this.selectIndex, 1)
+        if (!list.length) {
+          wgIndex = null 
+          data = {}
+          configTab = ''
+        }
+        if (this.pageData.list.length > 1 && this.selectIndex === (this.pageData.list.length - 1)) {
+          wgIndex = this.selectIndex - 1
+          data = this.pageData.list[wgIndex]
+        }
+        console.log('list', list)
+        console.log('data', data)
+        console.log('configTab', configTab)
+        console.log('wgIndex', wgIndex)
+        this.$store.commit('widgetData/setList', list)
+        this.$store.commit('widgetData/setSelectWg', data)
+        this.$store.commit('widgetData/setConfigTab', configTab)
+        this.$store.commit('widgetData/setSelectIndex', wgIndex)
+      }
+    },
+    // 删除子类
+    removeSonWg ({ index, sonIndex }) {
+      this.$store.commit('widgetData/delCollapseSonCt', index, sonIndex)
     }
   }
 }
@@ -83,5 +125,10 @@ export default {
 }
 .url-img{
   margin-bottom: 10px;
+}
+.el-icon-delete{
+  font-size: 20px;
+  float: right;
+  cursor: pointer;
 }
 </style>

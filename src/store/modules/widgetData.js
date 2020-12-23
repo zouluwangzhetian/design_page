@@ -138,6 +138,16 @@ const mutations = {
   setCollapseSonCt (state, { key, index, value, sonIndex }) {
     state.selectWg.sonlist[index].list[sonIndex][key] = value
     setListData(state, state.selectWg)
+  },
+  // 删除折叠面板父类
+  delCollapseFatherCt (state, index) {
+    state.selectWg.sonlist.splice(index, 1)
+    setListData(state, state.selectWg)
+  },
+  // 删除折叠面板子类
+  delCollapseSonCt (state, index, sonIndex) {
+    state.selectWg.sonlist[index].list.splice(sonIndex, 1)
+    setListData(state, state.selectWg)
   }
 };
 
