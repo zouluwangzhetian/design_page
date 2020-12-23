@@ -13,11 +13,14 @@ const state = {
   pageData: {
     list: [],
     title: '页面标题',
-    statsCode: '',
+    shareTitle: '分享标题',
+    shareContent: '分享内容',
+    shareImg: '', // 分享图片
+    // statsCode: '',
     theme: 'theme1',
-    fixedTop: [],
-    fixedBottom: [],
-    fixedCustom: [],
+    // fixedTop: [],
+    // fixedBottom: [],
+    // fixedCustom: [],
     style: {
       backgroundColor: '#fff',
       width: '375px',
