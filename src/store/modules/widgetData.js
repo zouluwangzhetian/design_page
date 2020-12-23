@@ -116,6 +116,7 @@ const mutations = {
   // 添加折叠面板儿子
   addCollapseSonCt (state, index) {
     state.selectWg.sonlist[index].list.push({
+      name: '',
       img: sonImg,
       link: ''
     })
@@ -124,6 +125,8 @@ const mutations = {
   // 添加折叠面板老子
   addCollapseCt (state) {
     state.selectWg.sonlist.push({
+      name: '',
+      expand: true,
       img: fatherImg,
       list: []
     })
