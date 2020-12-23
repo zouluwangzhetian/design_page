@@ -127,9 +127,14 @@ const mutations = {
     })
     setListData(state, state.selectWg)
   },
+  // 添加折叠面板父类类链接
+  setCollapseFatherCt (state, { key, index, value }) {
+    state.selectWg.sonlist[index][key] = value
+    setListData(state, state.selectWg)
+  },
   // 添加折叠面板子类链接
-  setCollapseCt (state, { index, value, sonIndex }) {
-    state.selectWg.sonlist[index].list[sonIndex].link = value
+  setCollapseSonCt (state, { key, index, value, sonIndex }) {
+    state.selectWg.sonlist[index].list[sonIndex][key] = value
     setListData(state, state.selectWg)
   }
 };

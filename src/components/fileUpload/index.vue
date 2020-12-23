@@ -37,6 +37,9 @@ export default {
     commitFun: {
       type: Function,
       required: true
+    },
+    sonIndex: {
+      type: Number
     }
   },
   methods: {
@@ -52,7 +55,7 @@ export default {
       fr.readAsDataURL(file[0])
       fr.onload = () => {
         // console.log(fr.result)
-        this.commitFun({ fr: fr.result, name: file[0].name, index: this.index })
+        this.commitFun({ fr: fr.result, name: file[0].name, index: this.index, sonIndex: this.sonIndex })
       }
     }
   }
