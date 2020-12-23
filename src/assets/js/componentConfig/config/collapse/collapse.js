@@ -9,10 +9,6 @@ export default [{
       img: fatherImg,
       list: [
         {
-          img: partition,
-          link: ''
-        },
-        {
           img: sonImg,
           link: ''
         },
@@ -25,10 +21,6 @@ export default [{
     {
       img: fatherImg,
       list: [
-        {
-          img: partition,
-          link: ''
-        },
         {
           img: sonImg,
           link: ''

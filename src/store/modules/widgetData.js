@@ -3,6 +3,10 @@ const setListData = (state, payload) => {
   state.pageData.list.splice(state.selectIndex, 1, untils.deepClone(payload))
 }
 
+const fatherImg = require('@/assets/img/4.png')
+// const partition = require('@/assets/img/5.png')
+const sonImg = require('@/assets/img/6.png')
+
 const state = {
   pageData: {
     list: [],
@@ -110,7 +114,7 @@ const mutations = {
   // 添加折叠面板儿子
   addCollapseSonCt (state, index) {
     state.selectWg.sonlist[index].list.push({
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      img: sonImg,
       link: ''
     })
     setListData(state, state.selectWg)
@@ -118,7 +122,7 @@ const mutations = {
   // 添加折叠面板老子
   addCollapseCt (state) {
     state.selectWg.sonlist.push({
-      img: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg',
+      img: fatherImg,
       list: []
     })
     setListData(state, state.selectWg)
