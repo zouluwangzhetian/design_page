@@ -1,25 +1,30 @@
 <template>
   <div class="page-config">
-    <div class="show_position">
-      <label class="el-form-item__label">显示位置</label>
+    <div class="vx-share">
+      <label class="el-form-item__label">分享标题</label>
       <div class="el-form-item__group">
-        <el-radio-group v-model="radio1" size="mini">
-          <el-radio-button label="正常"></el-radio-button>
-          <el-radio-button label="顶部悬浮"></el-radio-button>
-          <el-radio-button label="底部悬浮"></el-radio-button>
-        </el-radio-group>
+        <el-input size="mini" :value="pageData.title"  @input="value=>$store.commit('widgetData/setShareText', { key: 'title', value })"></el-input>
       </div>
+      <label class="el-form-item__label">分享副标题</label>
+      <div class="el-form-item__group">
+        <el-input size="mini" :value="pageData.shareContent"  @input="value=>$store.commit('widgetData/setShareText', { key: 'shareContent', value })"></el-input>
+      </div>
+      <!-- <div class="upload-poster">
+        <label class="el-form-item__label">上传封面图：</label>
+        <File-upload :img="pageData.shareImg" :index="0" :commitFun="commitPoster"></File-upload>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   name: 'pageConfig',
-  data () {
-    return {
-      radio1: '正常'
-    };
+  computed: {
+    ...mapState({
+      pageData: (state) => state.widgetData.pageData
+    })
   }
 }
 </script>
