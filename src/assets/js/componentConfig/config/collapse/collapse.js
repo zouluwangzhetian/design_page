@@ -1,27 +1,31 @@
 const fatherImg = require('@/assets/img/4.png')
-const partition = require('@/assets/img/5.png')
 const sonImg = require('@/assets/img/6.png')
 export default [{
   type: 'collapse',
   name: '折叠面板',
   sonlist: [
     {
+      name: '',
       img: fatherImg,
       list: [
         {
+          name: '',
           img: sonImg,
           link: ''
         },
         {
+          name: '',
           img: sonImg,
           link: ''
         }
       ]
     },
     {
+      name: '',
       img: fatherImg,
       list: [
         {
+          name: '',
           img: sonImg,
           link: ''
         }

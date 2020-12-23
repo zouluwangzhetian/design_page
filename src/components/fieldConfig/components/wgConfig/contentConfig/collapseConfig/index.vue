@@ -6,7 +6,7 @@
       class="img_content"
     >
       <div class="upload-img">
-        <File-upload :img="typeItem.img" :index="index" :type="item.type"></File-upload>
+        <File-upload :img="typeItem.img" :index="index"  :commitFun="commitImg"></File-upload>
       </div>
       <div
         v-for="(sonItem, sonIndex) in typeItem.list"
@@ -14,11 +14,11 @@
         class="collapse-child"
       >
         <div class="upload-son-img">
-          <File-upload :img="sonItem.img" :index="index" :type="item.type"></File-upload>
+          <File-upload :img="sonItem.img" :index="index" :sonIndex="sonIndex" :commitFun="commitImg1"></File-upload>
         </div>
         <div class="url-img">
           <label class="el-form-item__label">跳转链接</label>
-          <el-input :value="sonItem.link" @input="value=>$store.commit('widgetData/setCollapseCt', {index, value, sonIndex })"></el-input>
+          <el-input size="mini" :value="sonItem.link" @input="value=>$store.commit('widgetData/setCollapseSonCt', { key: 'link',index, value, sonIndex })"></el-input>
         </div>
       </div>
       <el-button type="text" @click="addDomain(index)">添加当前子类</el-button>
@@ -46,6 +46,16 @@ export default {
     },
     addDomain1 () {
       this.$store.commit('widgetData/addCollapseCt')
+    },
+    // 父类
+    commitImg ({ fr, name, index }) {
+      this.$store.commit('widgetData/setCollapseFatherCt', { key: 'img', value: fr, index })
+      this.$store.commit('widgetData/setCollapseFatherCt', { key: 'name', value: name, index })
+    },
+    // 子类
+    commitImg1 ({ fr, name, index, sonIndex }) {
+      this.$store.commit('widgetData/setCollapseSonCt', { key: 'img', value: fr, index, sonIndex })
+      this.$store.commit('widgetData/setCollapseSonCt', { key: 'name', value: name, index, sonIndex })
     }
   }
 }
@@ -67,5 +77,8 @@ export default {
     display: block;
     margin:0 auto;
   }
+}
+.url-img{
+  margin-bottom: 10px;
 }
 </style>
