@@ -13,7 +13,6 @@ const state = {
   pageData: {
     list: [],
     title: '页面标题',
-    shareTitle: '分享标题',
     shareContent: '分享内容',
     shareImg: '', // 分享图片
     // statsCode: '',
@@ -154,6 +153,10 @@ const mutations = {
   delCollapseSonCt (state, index, sonIndex) {
     state.selectWg.sonlist[index].list.splice(sonIndex, 1)
     setListData(state, state.selectWg)
+  },
+  // 分享主副标题,
+  setShareText (state, { key, value }) {
+    state.pageData[key] = value
   }
 };
 
