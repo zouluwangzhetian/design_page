@@ -1,5 +1,11 @@
 <template>
-  <div class="wg-collapse" :style="{ backgroundColor: item.style.backgroundColor }">
+  <div 
+    class="wg-collapse" 
+    :style="{ 
+      margin: item.style.margin,
+      backgroundColor: item.style.backgroundColor 
+    }"
+  >
     <div 
       v-for="(collapseItem, index) in item.sonlist"
       :key="index"
