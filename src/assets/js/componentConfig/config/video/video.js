@@ -11,6 +11,7 @@ export default [{
   },
   posterName: '', // 头图文件名称
   videoName: '', // 视频名称
+  bgImgName: '', // 背景图名称
   backgroundImg: bgImg, // 背景图
   style: {
     margin: '0px 0px 0px 0px',

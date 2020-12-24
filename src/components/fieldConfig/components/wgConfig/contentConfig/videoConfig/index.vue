@@ -4,6 +4,10 @@
       <label class="el-form-item__label">上传封面图：</label>
       <File-upload :img="item.videoAttr.poster" :index="0" :commitFun="commitPoster"></File-upload>
     </div>
+    <div class="upload-poster">
+      <label class="el-form-item__label">上传背景图图：</label>
+      <File-upload :img="item.backgroundImg" :index="0" :commitFun="commitbgPoster"></File-upload>
+    </div>
     <div class="upload-video">
       <label class="el-form-item__label">上传视频：</label>
       <File-upload :img="item.videoAttr.src" :index="0" :fileType="'video'" :accept="'.avi,.mp4,.rmvb'" :commitFun="commitVideo"></File-upload>
@@ -75,6 +79,11 @@ export default {
     commitPoster ({ fr, name }) {
       this.$store.commit('widgetData/setVideo', { key: 'poster', value: fr });
       this.$store.commit('widgetData/setVideoName', { key: 'posterName', value: name })
+    },
+    // 提交视频背景图
+    commitbgPoster ({ fr, name }) {
+      this.$store.commit('widgetData/setVideoName', { key: 'backgroundImg', value: fr });
+      this.$store.commit('widgetData/setVideoName', { key: 'bgImgName', value: name })
     },
     clickLoop (value) {
       this.$store.commit('widgetData/setVideo', { key: 'loop', value });
