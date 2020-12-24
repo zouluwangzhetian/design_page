@@ -6,7 +6,7 @@
     </div>
     <div class="upload-video">
       <label class="el-form-item__label">上传视频：</label>
-      <File-upload :img="item.videoAttr.src" :index="0" :fileType="'video'" :commitFun="commitVideo"></File-upload>
+      <File-upload :img="item.videoAttr.src" :index="0" :fileType="'video'" :accept="'.avi,.mp4,.rmvb'" :commitFun="commitVideo"></File-upload>
     </div>
 
     <div class="line_hight">
@@ -69,12 +69,12 @@ export default {
     // 提交视频
     commitVideo ({ fr, name }) {
       this.$store.commit('widgetData/setVideo', { key: 'src', value: fr });
-      this.$store.commit('widgetData/setVideo', { key: 'videoName', value: name })
+      this.$store.commit('widgetData/setVideoName', { key: 'videoName', value: name })
     },
     // 提交封面图
     commitPoster ({ fr, name }) {
       this.$store.commit('widgetData/setVideo', { key: 'poster', value: fr });
-      this.$store.commit('widgetData/setVideo', { key: 'posterName', value: name })
+      this.$store.commit('widgetData/setVideoName', { key: 'posterName', value: name })
     },
     clickLoop (value) {
       this.$store.commit('widgetData/setVideo', { key: 'loop', value });

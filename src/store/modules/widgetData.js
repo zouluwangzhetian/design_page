@@ -115,6 +115,10 @@ const mutations = {
     state.selectWg.videoAttr[payload.key] = payload.value
     setListData(state, state.selectWg)
   },
+  setVideoName (state, payload) {
+    state.selectWg[payload.key] = payload.value
+    setListData(state, state.selectWg)
+  },
   // 添加折叠面板儿子
   addCollapseSonCt (state, index) {
     state.selectWg.sonlist[index].list.push({

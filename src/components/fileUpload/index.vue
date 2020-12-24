@@ -7,7 +7,7 @@
         <i v-show="img" class="el-icon-plus"></i>
       </div>
     </div>
-    <input v-show="false" ref="uploadInput" type="file" @change="selectImg">
+    <input v-show="false" ref="uploadInput" type="file" :accept="accept" @change="selectImg">
     <p v-if="fileType === 'img'" class="tips">请保证图片名称与交付开发者图片名称相同</p>
     <p v-else class="tips">请保证视频名称与交付开发者视频名称相同</p>
   </div>
@@ -40,6 +40,10 @@ export default {
     },
     sonIndex: {
       type: Number
+    },
+    accept: {
+      type: String,
+      default: '.jpg,.png,.jpeg'
     }
   },
   methods: {
